@@ -53,7 +53,7 @@
 
 			<nav>
 				<ul>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
+					<li><a href="{{ url('blog') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>Blog</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -66,7 +66,33 @@
 		</main>
 
 		<footer id="footer">
-			Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved  •  Built with <a href="http://craftcms.com">Craft</a>
+			<div class="blog-list">
+				<h1 class="title"><a href="{{ url('blog') }}">Blog</a></h1>
+					<ul>
+						{% for entry in craft.entries.section('blog').limit(5).find() %}
+							<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+						{% endfor %}
+					</ul>
+			</div>
+			<div class="portfolio-types-list">
+				<h1 class="title"><a href="{{ url('portfolio') }}">Portfolio</a></h1>
+				<ul>
+					{% nav category in craft.categories.group('portfolio') %}
+						<li>
+							<a href="{{ category.url }}">{{ category.title }}</a>
+							{% ifchildren %}
+								<ul>
+									<li><a href="{{ category.url }}" class="view-children">View All</a></li>
+								    {% children %}
+								</ul>
+							{% endifchildren %}
+						</li>
+					{% endnav %}
+				</ul>
+			</div>
+			<div id="copyright">
+			<p>Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved.</p>
+			</div>
 		</footer>
 	</div>
 </body>
