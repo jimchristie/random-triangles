@@ -1,0 +1,59 @@
+
+#header { 
+	border-radius: 7px 7px 0 0; 
+	padding: 25px; 
+	display: block; 
+	color: #fff; 
+	background: $weirdPink;
+
+	a {
+		text-decoration: none;
+		color: #fff;
+	}
+
+	h1 {
+		float: left; 
+		margin: 0; 
+		font-weight: normal; 
+		font-size: 30px; 
+		line-height: 1; 
+	}
+
+	&:after {
+		content: '.'; 
+		display: block; 
+		height: 0; 
+		clear: both; 
+		visibility: hidden; 
+	}
+
+	nav { 
+		display: block; 
+		float: right; 
+
+		ul {
+			margin: 0; 
+			list-style-type: none; 
+
+			li {
+				float: left; 
+				margin-left: 20px; 
+
+				a {
+					display: block; 
+					margin-top: 4px; 
+					line-height: 22px; 
+
+					&:hover {
+						order-bottom: 2px solid #fff; 
+					}
+
+					&.active {
+						order-bottom: 2px solid #fff; 
+						cursor: default; 
+					}				
+				}
+			}
+		}
+	}
+}
