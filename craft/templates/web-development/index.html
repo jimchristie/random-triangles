@@ -11,18 +11,20 @@
  #}
 
 {% extends "_layout" %}
-{% set title = "News" %}
+{% set title = "Web Development" %}
 
 {% block content %}
-	<h1>Portfolio</h1>
 
-	{% for entry in craft.entries.section('portfolio').find() %}
+	{% for entry in craft.entries.section('webDevelopment').find() %}
 		<article>
 			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 
-			<p>{{ entry.title }}</p>
-			<p>{{ entry.media }}</p>
-			<p>{{ entry.artistStatement }}</p>
+			<div class="entry-content">
+
+				<p>{{ entry.title }}</p>
+				<p>{{ entry.media }}</p>
+				<p>{{ entry.artistStatement }}</p>
+			</div>
 
 			<!--
 			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>

@@ -1,0 +1,27 @@
+.art-portfolio {
+	img {
+		display: block;
+		margin: 0 auto;
+		max-width: 100%;
+		height: auto;
+	}
+
+	&.piece {
+		.entry-content {
+			padding-top: 0;
+		}
+	}
+
+	.media {
+		h5 {
+			margin-bottom: 0;
+			border-bottom: 1px solid $black;
+			font-size: 15px;
+		}
+
+		p {
+			margin-top: rem(5px);
+			font-size: rem(15px);
+		}
+	}
+}

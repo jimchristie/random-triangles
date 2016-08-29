@@ -1,0 +1,32 @@
+{#
+ # Art entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a Art entry’s URL is
+ # requested. That’s because the Art section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested Art entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title = entry.title %}
+
+{% block content %}
+	<article class="{{ entry.section | lower }}-portfolio piece">
+		<div class="entry-content no-border">
+			{% for asset in entry.images %}
+			    <img src="{{ asset.getUrl() }}" />
+			{% endfor %}
+			<div class="artist-statement">{{ entry.artistStatement }}</div>
+			<div class="media">
+				<h5>Media Type</h5>
+				{{ entry.media }}
+			</div>
+		</div>
+	</article>
+{% endblock %}

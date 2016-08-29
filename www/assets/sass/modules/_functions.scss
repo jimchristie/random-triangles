@@ -1,0 +1,101 @@
+@function rem($size) {
+	$rems: $size / 10px;
+	@return $rems * 1rem;
+}
+
+
+//=================================
+// COLORS
+//=================================
+
+// Color Map
+$colors: (
+	white: #fafafa,
+	beige: #f0eeee,
+	gray: (
+		faint: #f1f1f1,
+		lightest: #AAA,
+		light: #D8D7D7,
+		medium: #DDD,
+		base: #cac8c7,
+		hover: #B1AFAE,
+		dark: #9c9b9b
+	),
+	black: (
+		base: #0a0a0a,
+		lightest: #888,
+		light: #777,
+		medium: #434343,
+		dark: #222
+	),
+	slate: (
+		base: #636466,
+		light: #a9bab6
+	),
+	magenta: (
+		base: #aa218c,
+		dark: #910873
+	),
+	purple: (
+		light: #873694,
+		base: #7d0971,
+		dark: #5a0752
+	),
+	orange: (
+		base: #ff9c00,
+		burnt: #a63a00,
+		dark: #DC6907,
+		light: #ffa400
+	),
+	teal: (
+		base: #1fa8b1
+	),
+	green: (
+		base: #dfdf1d
+	),
+	blue: (
+		base: #00c2df
+	),
+	error: (
+		base: #b21e34
+	),
+	warning: (
+		base: #fd8204
+	),
+	info: (
+		base: #00c2df
+	),
+	red: (
+		base: #FF0000,
+		error: #d70f0f
+	),
+	firebrick: (
+		base: #b21f35
+	)
+);
+
+// Color Function
+@function color($color-name, $tone: base) {
+	@if map-has-key($colors, $color-name) {
+		$map-color-name: map-get($colors, $color-name);
+
+		@if (type-of($map-color-name) == 'map') { // It's a map
+			@return map-get($map-color-name, $tone);
+		} @else { // It's just a single color
+			@return $map-color-name;
+		}
+	} @else {
+		@warn "Couldn't find a color named `#{$color-name}`.";
+	}
+}
+
+$black: color(black);
+$white: color(white);
+$lightGray: color(gray, faint);
+$lightGrey: color(gray, faint);
+
+$main: color(orange);
+$mainDark: color(orange, burnt);
+$accentOne: color(teal);
+$accentTwoDark: color(purple, dark);
+$accentTwo: color(purple);

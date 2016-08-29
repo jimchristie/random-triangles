@@ -1,0 +1,57 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title =  entry.title %}
+
+
+{% macro errorList(errors) %}
+    {% if errors %}
+            {% for error in errors %}
+                <p class="errors">{{ error }}</p>
+            {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% from _self import errorList %}
+
+
+{% block content %}
+<form method="post" action="" accept-charset="UTF-8" id="contact-form">
+    {{ getCsrfInput() }}
+    <input type="hidden" name="action" value="contactForm/sendMessage">
+    <input type="hidden" name="redirect" value="contact/thanks">
+
+    <h3 class="input-label"><label for="fromName">Your Name</label></h3>
+    {{ message is defined and message ? errorList(message.getErrors('fromName')) }}
+    <input id="fromName" type="text" name="fromName" value="{% if message is defined %}{{ message.fromName }}{% endif %}">
+
+    <h3 class="input-label"><label for="fromEmail">Your Email</label></h3>
+    {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
+    <input id="fromEmail" type="email" name="fromEmail" value="{% if message is defined %}{{ message.fromEmail }}{% endif %}">
+
+    <h3 class="input-label"><label for="subject">Subject</label></h3>
+    {{ message is defined and message ? errorList(message.getErrors('subject')) }}
+    <input id="subject" type="text" name="subject" value="{% if message is defined %}{{ message.subject }}{% endif %}">
+
+    <h3 class="input-label"><label for="message">Message</label></h3>
+    {{ message is defined and message ? errorList(message.getErrors('message')) }}
+    <textarea rows="10" cols="40" id="message" name="message">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+
+    <input type="hidden" name="redirect" value="contact/thanks?from={fromName}">
+
+    <input type="submit" value="Send">
+</form>
+{% endblock %}

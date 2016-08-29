@@ -2206,11 +2206,13 @@ Craft.BaseElementIndex = Garnish.Base.extend(
 				{
 					this.$selectAllCheckbox.removeClass('indeterminate');
 					this.$selectAllCheckbox.addClass('checked');
+					this.$selectAllBtn.attr('aria-checked', 'true');
 				}
 				else
 				{
 					this.$selectAllCheckbox.addClass('indeterminate');
 					this.$selectAllCheckbox.removeClass('checked');
+					this.$selectAllBtn.attr('aria-checked', 'mixed');
 				}
 
 				this.showActionTriggers();
@@ -2218,6 +2220,7 @@ Craft.BaseElementIndex = Garnish.Base.extend(
 			else
 			{
 				this.$selectAllCheckbox.removeClass('indeterminate checked');
+				this.$selectAllBtn.attr('aria-checked', 'false');
 				this.hideActionTriggers();
 			}
 		}
@@ -3019,8 +3022,14 @@ Craft.BaseElementIndex = Garnish.Base.extend(
 			{
 				// Create the select all button
 				this.$selectAllContainer = $('<td class="selectallcontainer thin"/>');
-				this.$selectAllBtn = $('<div class="btn"/>').appendTo(this.$selectAllContainer);
+				this.$selectAllBtn = $('<div class="btn" />').appendTo(this.$selectAllContainer);
 				this.$selectAllCheckbox = $('<div class="checkbox"/>').appendTo(this.$selectAllBtn);
+
+				this.$selectAllBtn.attr({
+					'role': 'checkbox',
+					'tabindex': '0',
+					'aria-checked': 'false',
+				});
 
 				this.addListener(this.$selectAllBtn, 'click', function()
 				{
@@ -3033,11 +3042,23 @@ Craft.BaseElementIndex = Garnish.Base.extend(
 						this.view.deselectAllElements();
 					}
 				});
+
+				this.addListener(this.$selectAllBtn, 'keydown', function(ev)
+				{
+					if(ev.keyCode == Garnish.SPACE_KEY)
+					{
+						ev.preventDefault();
+
+						$(ev.currentTarget).trigger('click');
+					}
+				});
 			}
 			else
 			{
 				// Reset the select all button
 				this.$selectAllCheckbox.removeClass('indeterminate checked');
+
+				this.$selectAllBtn.attr('aria-checked', 'false');
 			}
 
 			// Place the select all button at the beginning of the toolbar
@@ -6515,10 +6536,11 @@ Craft.AssetSelectorModal = Craft.BaseElementSelectorModal.extend(
 		{
 			allowTransforms = true;
 
-				for (var i = 0; i < $selectedElements.length; i++)
+			for (var i = 0; i < $selectedElements.length; i++)
 			{
 				if (!$('.element.hasthumb:first', $selectedElements[i]).length)
 				{
+					allowTransforms = false;
 					break;
 				}
 			}
@@ -10077,7 +10099,7 @@ Craft.ElementEditor = Garnish.Base.extend(
 
 			if (response.locales)
 			{
-				var $header = $('<div class="header"/>'),
+				var $header = $('<div class="hud-header"/>'),
 					$localeSelectContainer = $('<div class="select"/>').appendTo($header);
 
 				this.$localeSelect = $('<select/>').appendTo($localeSelectContainer);
@@ -10101,7 +10123,7 @@ Craft.ElementEditor = Garnish.Base.extend(
 
 			this.onCreateForm(this.$form);
 
-			var $footer = $('<div class="footer"/>').appendTo(this.$form),
+			var $footer = $('<div class="hud-footer"/>').appendTo(this.$form),
 				$buttonsContainer = $('<div class="buttons right"/>').appendTo($footer);
 			this.$cancelBtn = $('<div class="btn">'+Craft.t('Cancel')+'</div>').appendTo($buttonsContainer);
 			this.$saveBtn = $('<input class="btn submit" type="submit" value="'+Craft.t('Save')+'"/>').appendTo($buttonsContainer);
@@ -10455,8 +10477,8 @@ Craft.ElevatedSessionManager = Garnish.Base.extend(
 
 			if (textStatus == 'success')
 			{
-				// Is there still enough time left?
-				if (response.timeout >= Craft.ElevatedSessionManager.minSafeElevatedSessionTimeout)
+				// Is there still enough time left or has it been disabled?
+				if (response.timeout === false || response.timeout >= Craft.ElevatedSessionManager.minSafeElevatedSessionTimeout)
 				{
 					this.callback();
 				}
@@ -11843,6 +11865,10 @@ Craft.Grid = Garnish.Base.extend(
 	itemHeights: null,
 	leftPadding: null,
 
+	_refreshingCols: false,
+	_refreshColsAfterRefresh: false,
+	_forceRefreshColsAfterRefresh: false,
+
 	init: function(container, settings)
 	{
 		this.$container = $(container);
@@ -11919,8 +11945,19 @@ Craft.Grid = Garnish.Base.extend(
 
 	refreshCols: function(force, animate)
 	{
+		if (this._refreshingCols) {
+			this._refreshColsAfterRefresh = true;
+			if (force) {
+				this._forceRefreshColsAfterRefresh = true;
+			}
+			return;
+		}
+
+		this._refreshingCols = true;
+
 		if (!this.items.length)
 		{
+			this.completeRefreshCols();
 			return;
 		}
 
@@ -11934,7 +11971,7 @@ Craft.Grid = Garnish.Base.extend(
 
 		if (this.refreshCols._.scrollHeight == 0)
 		{
-			delete this.refreshCols._;
+			this.completeRefreshCols();
 			return;
 		}
 
@@ -11960,7 +11997,7 @@ Craft.Grid = Garnish.Base.extend(
 		// Same number of columns as before?
 		if (force !== true && this.totalCols === this.refreshCols._.totalCols)
 		{
-			delete this.refreshCols._;
+			this.completeRefreshCols();
 			return;
 		}
 
@@ -12233,12 +12270,33 @@ Craft.Grid = Garnish.Base.extend(
 			}
 		}
 
-		this.onRefreshCols();
-
-		delete this.refreshCols._;
+		this.completeRefreshCols();
 
 		// Resume container resize listening
 		this.addListener(this.$container, 'resize', this.handleContainerHeightProxy);
+
+		this.onRefreshCols();
+	},
+
+	completeRefreshCols: function()
+	{
+		// Delete the internal variable object
+		if (typeof this.refreshCols._ != typeof undefined)
+		{
+			delete this.refreshCols._;
+		}
+
+		this._refreshingCols = false;
+
+		if (this._refreshColsAfterRefresh) {
+			force = this._forceRefreshColsAfterRefresh;
+			this._refreshColsAfterRefresh = false;
+			this._forceRefreshColsAfterRefresh = false;
+
+			Garnish.requestAnimationFrame($.proxy(function() {
+				this.refreshCols(force);
+			}, this))
+		}
 	},
 
 	getItemWidth: function(colspan)
@@ -12982,6 +13040,11 @@ Craft.LightSwitch = Garnish.Base.extend(
 
 		this.on = this.$outerContainer.hasClass('on');
 
+		this.$outerContainer.attr({
+			'role': 'checkbox',
+			'aria-checked': (this.on ? 'true' : 'false'),
+		});
+
 		this.addListener(this.$outerContainer, 'mousedown', '_onMouseDown');
 		this.addListener(this.$outerContainer, 'keydown', '_onKeyDown');
 
@@ -13004,6 +13067,7 @@ Craft.LightSwitch = Garnish.Base.extend(
 
 		this.$input.val('1');
 		this.$outerContainer.addClass('on');
+		this.$outerContainer.attr('aria-checked', 'true');
 		this.on = true;
 		this.onChange();
 	},
@@ -13018,6 +13082,7 @@ Craft.LightSwitch = Garnish.Base.extend(
 
 		this.$input.val('');
 		this.$outerContainer.removeClass('on');
+		this.$outerContainer.attr('aria-checked', 'false');
 		this.on = false;
 		this.onChange();
 	},
@@ -13956,9 +14021,6 @@ Craft.PasswordInput = Garnish.Base.extend(
 		this.setCurrentInput(this.$passwordInput);
 		this.updateToggleLabel(Craft.t('Show'));
 		this.showingPassword = false;
-
-		// Alt key temporarily shows the password
-		this.addListener(this.$passwordInput, 'keydown', 'onKeyDown');
 	},
 
 	togglePassword: function()
@@ -13973,27 +14035,6 @@ Craft.PasswordInput = Garnish.Base.extend(
 		}
 
 		this.settings.onToggleInput(this.$currentInput);
-	},
-
-	onKeyDown: function(ev)
-	{
-		if (ev.keyCode == Garnish.ALT_KEY && this.$currentInput.val())
-		{
-			this.showPassword();
-			this.$showPasswordToggle.hide();
-			this.addListener(this.$textInput, 'keyup', 'onKeyUp');
-		}
-	},
-
-	onKeyUp: function(ev)
-	{
-		ev.preventDefault();
-
-		if (ev.keyCode == Garnish.ALT_KEY)
-		{
-			this.hidePassword();
-			this.$showPasswordToggle.show();
-		}
 	},
 
 	onInputChange: function()
@@ -16391,7 +16432,7 @@ Craft.ui =
 
 		if (config.showCharsLeft && config.maxlength)
 		{
-			$input.css('padding-'(Craft.orientation == 'ltr' ? 'right' : 'left'), (7.2*config.maxlength.toString().length+14)+'px');
+			$input.css('padding-'+(Craft.orientation == 'ltr' ? 'right' : 'left'), (7.2*config.maxlength.toString().length+14)+'px');
 		}
 
 		if (config.placeholder || config.showCharsLeft)
@@ -16544,7 +16585,7 @@ Craft.ui =
 
 		var $field = $('<div/>', {
 			'class': 'field',
-			id: (config.id ? config.id+'-field' : null)
+			'id': config.fieldId || (config.id ? config.id+'-field' : null)
 		});
 
 		if (config.first) $field.addClass('first');
@@ -16556,6 +16597,7 @@ Craft.ui =
 			if (label)
 			{
 				var $label = $('<label/>', {
+					'id': config.labelId || (config.id ? config.id+'-label' : null),
 					'class': (config.required ? 'required' : null),
 					'for': config.id,
 					text: label

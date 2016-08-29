@@ -14,11 +14,13 @@
  #}
 
 {% extends "_layout" %}
+{% set title = entry.title %}
 
 {% block content %}
 	<article>
-		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{{ entry.body }}
+		<div class="entry-content">
+			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+			{{ entry.body }}
+		</div>
 	</article>
 {% endblock %}

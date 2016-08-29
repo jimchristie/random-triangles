@@ -1,0 +1,20 @@
+{#
+ # Thanks page template
+ # -------------------
+ #
+ # This template gets loaded whenever a user successfully submits a message through the contact form.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+{% set title =  "Thanks!" %}
+
+
+{% block content %}
+<div class="thanks">
+    <p>Thanks for sending that in, {{ craft.request.getQuery('from') }}!</p>
+    <p>I'll check it out and get back to you as soon as I can.</p>
+</div>
+{% endblock %}

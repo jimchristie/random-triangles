@@ -11,75 +11,98 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-<head>
-	<meta charset="utf-8" />
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
-	<link rel="home" href="{{ siteUrl }}" />
-	<link rel="stylesheet" type="text/css" href="assets/style.css"> 
-</head>
+	<head>
+		<meta charset="utf-8" />
+		<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+		<link rel="home" href="{{ siteUrl }}" />
+		<link rel="stylesheet" type="text/css" href="{{ siteUrl }}assets/style.css"> 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Franklin">
+		<script src="https://use.fontawesome.com/7da62fb7ed.js"></script>
+	</head>
 
-<body>
-	<div id="container">
+	<body class="{% if title is defined %}page-title-{{ title |lower|replace({' ': '-'}) }}{% else %}no-title{% endif %}">
 		<header id="header">
-			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
-
+				{% for image in craft.assets.filename('Me.jpg') %}
+					<a href="{{ siteUrl }}" class="home-link" id="site-logo" style="background-image: url('{{ image.getUrl() }}')"></a>
+				{% endfor %}
+				<h1 class="home-link" id="site-title">
+					<a href="{{ siteUrl }}">{{ siteName }}</a>
+				</h1>
 			<nav>
-				<ul>
+				<ul class="top-level-nav">
 					<li class="nav-item"><a href="{{ url('blog') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>Blog</a></li>
-					<li class="nav-item"><a href="{{ url('portfolio') }}" {% if craft.request.firstSegment == 'portfolio' %}class="active"{% endif %}>Portfolio</a>
-						{% nav category in craft.categories.group('portfolio') %}
-						<ul>
-							<li><a href="{{ category.url }}">{{ category.title }}</a>
-							{% ifchildren %}
-								<ul class="nav-ul second-level">
-									<li class="nav-item second-level"><a href="{{ category.url }}" class="view-children">View All</a></li>
-								    {% children %}
-								</ul>
-							{% endifchildren %}
-							</li>
-						</ul>
-						{% endnav %}
+					<li class="nav-item"><a href="{{ url('art') }}" {% if craft.request.firstSegment == 'art' %}class="active"{% endif %}>Art</a></li>
+					<li class="nav-item"><a href="{{ url('web-development') }}" {% if craft.request.firstSegment == 'webDevelopment' %}class="active"{% endif %}>Web Development</a></li>
+					<li class="nav-item"><a href="{{ url('contact') }}" {% if craft.request.firstSegment == 'contact' %}class="active"{% endif %}>Contact</a></li>
+					<li class="nav-item social-links">
+						<a href="https://www.linkedin.com/in/jimchristieweb
+" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+						<a href="https://www.github.com/jimchristie" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+						<a href="http://stackexchange.com/users/1405583/jimirings?tab=accounts" target="_blank"><i class="fa fa-stack-exchange" aria-hidden="true"></i></a>
 					</li>
 				</ul>
 			</nav>
+			
 		</header>
 
-		<main id="content" role="main">
-			{% block content %}
-				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
-				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
-			{% endblock %}
+		{% if title is defined %}<div id="page-title-container"><h1 id="page-title">{{ title }}</h1></div>{% endif %}
+		<main class="content">
+			<div class="margin-container">
+				{% block content %}
+					<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+					<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+				{% endblock %}
+			</div>
 		</main>
 
 		<footer id="footer">
-			<div class="blog-list">
-				<h1 class="title"><a href="{{ url('blog') }}">Blog</a></h1>
-					<ul>
-						{% for entry in craft.entries.section('blog').limit(5).find() %}
-							<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-						{% endfor %}
-					</ul>
-			</div>
-			<div class="portfolio-types-list">
-				<h1 class="title"><a href="{{ url('portfolio') }}">Portfolio</a></h1>
-				<ul>
-					{% nav category in craft.categories.group('portfolio') %}
-						<li>
-							<a href="{{ category.url }}">{{ category.title }}</a>
-							{% ifchildren %}
-								<ul>
-									<li><a href="{{ category.url }}" class="view-children">View All</a></li>
-								    {% children %}
-								</ul>
-							{% endifchildren %}
-						</li>
-					{% endnav %}
-				</ul>
-			</div>
-			<div id="copyright">
-			<p>Copyright {{ now.year }} {{ craft.request.serverName | ucfirst }}. All rights reserved.</p>
+			<div class="margin-container">
+				<div class="footer-nav">
+					<div class="footer-nav-item blog-list">
+						<h3 class="footer-nav-header"><a href="{{ url('blog') }}">Blog</a></h3>
+							<h4>Business</h4>
+							<ul>
+								{% set featuredPosts = craft.entries.section('blog').featuredPost('1') %}
+								{% for entry in featuredPosts.type('business').limit(3).find() %}
+									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+								{% endfor %}
+							</ul>
+							<h4>Pleasure</h4>
+							<ul>
+								{% for entry in featuredPosts.type('pleasure').limit(3).find() %}
+									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+								{% endfor %}
+							</ul>
+					</div>
+					<div class="footer-nav-item art-list">
+						<h3 class="footer-nav-header"><a href="{{ url('art') }}">Art</a></h3>
+							<h4>Paintings</h4>
+							<ul>
+								{% set featuredArt = craft.entries.section('art').featuredArt('1') %}
+								{% for entry in featuredArt.type('paintings').limit(3).find() %}
+									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+								{% endfor %}
+							</ul>
+							<h4>Digital Art</h4>
+							<ul>
+								{% for entry in featuredArt.type('digitalArt').limit(3).find() %}
+									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+								{% endfor %}
+							</ul>
+					</div>
+					<div class="footer-nav-item web-development-list">
+						<h3 class="footer-nav-header"><a href="{{ url('web-development') }}">Web Development</a></h3>
+							<ul>
+								{% for entry in craft.entries.section('webDevelopment').limit(5).find() %}
+									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+								{% endfor %}
+							</ul>
+					</div>
+				</div>
+				<div id="copyright">
+					<p>Copyright {{ now.year }} {{ siteName }}.<br>All rights reserved.</p>
+				</div>
 			</div>
 		</footer>
-	</div>
-</body>
+	</body>
 </html>

@@ -1,24 +1,67 @@
 
 #header { 
-	border-radius: 7px 7px 0 0; 
-	padding: 25px; 
+	padding: rem(25px) 5% 0; 
 	display: block; 
-	color: #fff; 
-	background: $weirdPink;
+	color: $black; 
+	background: $main;
+	overflow: hidden;
+
+	#site-logo {
+		display: block;
+		position: relative;
+		margin-bottom: rem(25px);
+	}
 
 	a {
 		text-decoration: none;
-		color: #fff;
+		color: $white;
+		font-weight: bold;
 	}
 
-	h1 {
-		float: left; 
+	#site-title {
 		margin: 0; 
 		font-weight: normal; 
-		font-size: 30px; 
+		font-size: rem(60px); 
 		line-height: 1; 
+		position: absolute;
+		left: rem(325px);
+		top: rem(115px);
+		margin-left: rem(-50px);
+
+		a {
+			font-size: inherit;
+			padding-left: rem(100px);
+
+			 @include media(medium){
+			 	padding-left: 0;
+			 }
+		}
+
+		@include media(xlarge){
+			left: rem(300px);
+		}
+
+		@include media(large){
+			top: rem(130px);
+			left: rem(275px);
+		}
+
+		@include media(medium){
+			font-size: rem(50px);
+			margin: rem(25px) 0 rem(15px);	
+			position: relative;
+			top: 0;
+			left: 0;
+			transform: none;
+			text-align: center;
+		}
+
+		@include media(small){
+			font-size: 35px;
+		}
 	}
 
+	/*
 	&:after {
 		content: '.'; 
 		display: block; 
@@ -26,34 +69,134 @@
 		clear: both; 
 		visibility: hidden; 
 	}
+	*/
+
+
+
+	#site-logo {
+		height: rem(250px);
+		width: rem(250px);
+		background-position: center rem(-10px);
+		background-repeat: no-repeat;
+		border-radius: (125px);
+		display: inline-block;
+
+		@include media(medium){
+			display: block;
+			margin: 0 auto;
+			width: rem(200px);
+			height: rem(200px);
+		}
+	}
 
 	nav { 
 		display: block; 
-		float: right; 
+		position: absolute;
+		top: rem(200px);
+		left: rem(375px);
+		width: calc(100% - 415px);
+
 
 		ul {
 			margin: 0; 
 			list-style-type: none; 
+			padding: 0;
 
 			li {
-				float: left; 
-				margin-left: 20px; 
+				position: relative;
+				display: inline-block;
+				font-size: rem(20px);
+				text-align: center;
 
-				a {
-					display: block; 
-					margin-top: 4px; 
-					line-height: 22px; 
+				&.social-links {
+					padding-top: rem(10px);
+					position: absolute;
+					right: 0;
 
-					&:hover {
-						order-bottom: 2px solid #fff; 
+					@include media(large) {
+						position: relative;
 					}
 
-					&.active {
-						order-bottom: 2px solid #fff; 
-						cursor: default; 
-					}				
+					a {
+						display: inline;
+					}
+
+					@include media(medium) {
+						display: flex;
+
+						a {
+							flex-grow: 0;
+
+							&:first-child {
+								text-align: right;
+								flex-grow: 1;
+							}
+
+							&:last-child {
+								text-align: left;
+								flex-grow: 1;
+							}
+						}
+					}
+				}
+
+				@include media(medium){
+					width: 100%;
+				}
+
+				a {
+					margin-top: rem(10px);
+					margin-right: rem(15px);
+					display: block;
+					text-align: center;
+
+					&:hover {
+						color: $mainDark;
+
+						::after {
+							content: ' ';
+							width: 100%;
+							border-bottom: 1px solid $mainDark;
+						}
+					}
+
+					@include media(medium){
+						margin: 0;
+						padding: rem(15px);
+						border-top: 1px solid $mainDark;
+					}
 				}
 			}
+
+			@include media(large){
+				display: flex;
+
+				li {
+					flex-grow: 1;
+				}
+			}
+
+			@include media(medium){
+				display: block;
+			}
+		}
+
+		@include media(xlarge){
+			left: rem(350px);
+		}
+
+		@include media(large){
+			position: static;
+			border: none;
+			width: auto;
+			margin: 0 rem(20px) rem(20px);
+		}
+
+		@include media(medium){
+			position: relative;
+			left: 0;
+			top: auto;
+			margin: 0;
 		}
 	}
 }

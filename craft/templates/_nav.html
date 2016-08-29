@@ -1,0 +1,21 @@
+{% macro recursiveNav(entries) %}
+	<nav>
+		<ul>
+			<li class="nav-item"><a href="{{ url('blog') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>Blog</a></li>
+			<li class="nav-item"><a href="{{ url('portfolio') }}" {% if craft.request.firstSegment == 'portfolio' %}class="active"{% endif %}>Portfolio</a>
+				<ul>
+					{% nav category in craft.categories.group('portfolio') %}
+						<li class="nav-item"><a href="{{ category.url }}">{{ category.title }}</a>
+							{% ifchildren %}
+								<ul class="nav-ul second-level">
+									<li class="nav-item second-level"><a href="{{ category.url }}" class="view-children">View All</a></li>
+								    {% children %}
+								</ul>
+							{% endifchildren %}
+						</li>
+					{% endnav %}
+				</ul>
+			</li>
+		</ul>
+	</nav>
+{% endmacro %}

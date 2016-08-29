@@ -1,0 +1,21 @@
+#contact-form {
+	margin: rem(-20px) rem(20px) rem(30px);
+}
+
+input[type="submit"]{
+	margin-top: rem(15px);
+}
+
+.input-label {
+	margin-top: rem(30px);
+	margin-bottom: 0;
+}
+
+.errors {
+	margin: 0;
+	color: color(red, error);
+}
+
+.thanks {
+	padding-bottom: rem(20px);
+}
