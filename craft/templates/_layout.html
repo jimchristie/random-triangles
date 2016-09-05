@@ -13,14 +13,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 	<head>
 		<meta charset="utf-8" />
-		<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+		<title>{% if title is defined and title != "Home" %}{{ title }} - {% endif %}{{ siteName }}</title>
 		<link rel="home" href="{{ siteUrl }}" />
 		<link rel="stylesheet" type="text/css" href="{{ siteUrl }}assets/style.css"> 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Franklin">
 		<script src="https://use.fontawesome.com/7da62fb7ed.js"></script>
 	</head>
 
-	<body class="{% if title is defined %}page-title-{{ title |lower|replace({' ': '-'}) }}{% else %}no-title{% endif %}">
+	<body class="{% if title is defined %}page-title-{{ title | lower | replace({' ': '-'}) }}{% else %}no-title{% endif %}">
 		<header id="header">
 				{% for image in craft.assets.filename('Me.jpg') %}
 					<a href="{{ siteUrl }}" class="home-link" id="site-logo" style="background-image: url('{{ image.getUrl() }}')"></a>
@@ -29,7 +29,10 @@
 					<a href="{{ siteUrl }}">{{ siteName }}</a>
 				</h1>
 			<nav>
-				<ul class="top-level-nav">
+				<div id="mobile-nav">
+					<button><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+				</div>
+				<ul id="main-nav" class="top-level-nav">
 					<li class="nav-item"><a href="{{ url('blog') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>Blog</a></li>
 					<li class="nav-item"><a href="{{ url('art') }}" {% if craft.request.firstSegment == 'art' %}class="active"{% endif %}>Art</a></li>
 					<li class="nav-item"><a href="{{ url('web-development') }}" {% if craft.request.firstSegment == 'webDevelopment' %}class="active"{% endif %}>Web Development</a></li>
@@ -45,7 +48,7 @@
 			
 		</header>
 
-		{% if title is defined %}<div id="page-title-container"><h1 id="page-title">{{ title }}</h1></div>{% endif %}
+		{% if title is defined and title != "Home" %}<div id="page-title-container"><h1 id="page-title">{{ title }}</h1></div>{% endif %}
 		<main class="content">
 			<div class="margin-container">
 				{% block content %}
@@ -104,5 +107,7 @@
 				</div>
 			</div>
 		</footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="{{ siteUrl }}assets/js/main.js"></script>
 	</body>
 </html>

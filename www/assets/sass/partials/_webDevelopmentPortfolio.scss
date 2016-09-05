@@ -1,0 +1,134 @@
+.web-development-portfolio {
+	.featured-image {
+		margin-right: 5%;
+		overflow: hidden;
+		width: 60%;
+		max-height: rem(600px);
+		line-height: 0;
+
+		@include media(xlarge){
+			width: 100%;
+		}
+
+		@include media(large){
+			width: calc(100% + 40px);
+			margin: rem(-20px) rem(-20px) rem(20px);
+		}
+
+		img {
+			width: 100%; 
+			height: auto;
+			border: 1px solid $black;
+
+			@include media(large){
+				border: none;
+				border-bottom: 1px solid $black;
+				border-top: 1px solid $black;
+			}
+		}
+	}
+}
+
+.web-development-preview {
+	.image-thumbnail {
+		height: rem(400px);
+		width: auto;	
+	}
+}
+
+.skills {
+	margin-top: rem(50px);
+}
+
+.skills-technologies {
+
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	list-style-type: none;
+	padding: 0;
+
+	.tag {
+		flex-grow: 1;
+		margin-right: rem(8px);
+	}
+	
+}
+
+.worked-on-dates {
+
+	h4 {
+		margin-top: 0;
+		margin-bottom: 0;
+		font-weight: normal;
+		text-decoration: underline;
+	}
+	p {
+		margin-top: 0;
+	}
+}
+
+.image-and-summary {
+	display: flex;
+
+	.summary {
+		width: 40%;
+
+		@include media(large){
+			width: 100%;
+		}
+	}
+
+	@include media(large){
+		display: block;
+	}
+}
+
+/*************************************************
+
+Individual entries
+
+**************************************************/
+
+.project {
+	.entry-content {
+		padding: rem(20px) 0;
+		border: none;
+
+		.summary {
+			margin-right: 5%;
+			order: 1;
+			width: 50%;
+
+			@include media (large) {
+				margin-right: 0;
+				width: 100%;
+			}
+		}
+
+		.featured-image {
+			margin-right: 0;
+			width: 125%;
+			order: 2;
+
+			@include media(large){
+				width: 100%;
+				margin: 0 0 rem(30px);
+			}
+		}
+
+		img {
+			border: none;
+		}
+
+		.skills {
+			h4 {
+				font-size: 2rem;
+			}
+		}
+
+		.full-description {
+			margin-top: rem(50px);
+		}
+	}
+}

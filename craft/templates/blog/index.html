@@ -1,9 +1,9 @@
 {#
- # News index template
+ # Blog index template
  # -------------------
  #
- # This template is loaded whenever http://example.com/news is
- # requested, because it is located at news/index.html in your
+ # This template is loaded whenever http://example.com/blog is
+ # requested, because it is located at blog/index.html in your
  # craft/templates/ folder.
  #
  # See this page for more details on how Craft routes requests:
@@ -17,13 +17,13 @@
 {% block content %}
 		
 	{% for entry in craft.entries.section('blog').find() %}
-		<article>
+		<article class="blog index">
 			<h2 class="title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
 			<div class="entry-content">
 				<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 				{{ entry.body.getPage(1) }}
-				<p><a href="{{ entry.url }}">Continue reading</a></p>
 			</div>
+			<div class="view-more"><a href="{{ entry.url }}">This&nbsp;is&nbsp;fascinating.<br>I&nbsp;want&nbsp;to&nbsp;know&nbsp;more.</a></div>
 		</article>
 	{% endfor %}
 {% endblock %}

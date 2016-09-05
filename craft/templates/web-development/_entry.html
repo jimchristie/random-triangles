@@ -17,10 +17,49 @@
 {% set title = entry.title %}
 
 {% block content %}
-	<article>
-		<div class="entry-content">
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-			{{ entry.body }}
+
+
+<article class="web-development-portfolio project">
+	<div class="entry-content">
+		<div class="image-and-summary">
+			{% for asset in entry.featuredImage.limit(1).find() %}
+				<div class="featured-image"><img src="{{ asset.getUrl() }}"></div>
+			{% endfor %}
+			<div class="summary">
+				{% if entry.startDate %}
+					<div class="worked-on-dates">
+						<h4>Worked On</h4>
+						<p><strong>{{ entry.startDate | date('F Y') }}</strong>
+						{% if entry.endDate %}
+							to <strong>{{entry.endDate | date('F Y') }}</strong></p>
+						{% else %}
+							to <strong>Present</strong></p>
+						{% endif %}
+					</div>
+				{% endif %}
+				<div class="project-url"><a href="{{ entry.webPrefix }}{{ entry.webLink }}">{{  entry.webLink }}</a></div>
+				{% set tags = entry.skills %}
+				{% if tags | length %}
+					<div class="skills">
+					    <h4>How I got it done</h4>
+					    <div class="skills-technologies">
+						    {% for tag in tags %}
+						    	<span class="tag">{{ tag }}</span>
+						    {% endfor %}
+					    </div>
+					</div>
+				{% endif %}
+			</div>
 		</div>
-	</article>
+		<div class="full-description">{{ entry.body }}</div>
+	</div>
+</article>
+
+
+
+	<!--<article class="web-development-portfolio project">
+		<div class="entry-content">
+			<p>{{ entry.body }}</p>
+		</div>
+	</article>-->
 {% endblock %}

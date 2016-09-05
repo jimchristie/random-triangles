@@ -14,7 +14,7 @@ $colors: (
 	beige: #f0eeee,
 	gray: (
 		faint: #f1f1f1,
-		lightest: #AAA,
+		lightest: #ebeaea,
 		light: #D8D7D7,
 		medium: #DDD,
 		base: #cac8c7,
@@ -48,7 +48,9 @@ $colors: (
 		light: #ffa400
 	),
 	teal: (
-		base: #1fa8b1
+		base: #1fa8b1,
+		dark: #19858c,
+		light: #23b7c1
 	),
 	green: (
 		base: #dfdf1d
@@ -97,5 +99,7 @@ $lightGrey: color(gray, faint);
 $main: color(orange);
 $mainDark: color(orange, burnt);
 $accentOne: color(teal);
-$accentTwoDark: color(purple, dark);
+$accentOneDark: color(teal, dark);
+$accentOneLight: color(teal, light);
 $accentTwo: color(purple);
+$accentTwoDark: color(purple, dark);

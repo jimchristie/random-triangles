@@ -18,6 +18,7 @@
  #}
 
 {% extends "_layout" %}
+{% set title = "Home" %}
 
 {% block content %}
 
@@ -31,22 +32,24 @@
 		<h2 class="title">Blog</h2>
 		<div class="entry-content no-bottom-border">
 			<div class="homepage-featured-post business">
-				{% set featuredPosts = craft.entries.section('blog').featuredPost('1') %}
+				{% set featuredPosts = craft.entries.section('blog').featured('1') %}
 				{% for entry in featuredPosts.type('business').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-					{% for asset in entry.blogFeaturedImage.limit(1).find() %}
-						<div class="featured-image" style="background-image: url('{{ asset.getUrl() }}');" ></div>
+					{% for asset in entry.featuredImage.limit(1).find() %}
+						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl() }}');" ></div></a>
 					{% endfor %}
 					<div>{{ entry.homepageSnippet }}</div>
+					<div class="continue-reading"><a href="{{ entry.url }}">Continue reading</a></div>
 				{% endfor %}
 			</div>
 			<div class="homepage-featured-post pleasure">
 				{% for entry in featuredPosts.type('pleasure').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-					{% for asset in entry.blogFeaturedImage.limit(1).find() %}
-						<div class="featured-image" style="background-image: url('{{ asset.getUrl() }}'); {% if entry.blogFeaturedImageFocalPoint %}background-position: {{entry.blogFeaturedImageFocalPoint}}; {% endif %}"></div>
+					{% for asset in entry.featuredImage.limit(1).find() %}
+						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl() }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
 					{% endfor %}
 					<div>{{ entry.homepageSnippet }}</div>
+					<div class="continue-reading"><a href="{{ entry.url }}">Continue reading</a></div>
 				{% endfor %}
 			</div>
 		</div>
@@ -55,11 +58,11 @@
 	<div class="section">
 		<h2 class="title">Art</h2>
 		<div class="entry-content art no-border">
-			{% set featuredArt = craft.entries.section('art').featuredArt('1') %}
+			{% set featuredArt = craft.entries.section('art').featured('1') %}
 			{% for entry in featuredArt.limit(4).find() %}
 				<div class="art-preview" id="art-preview-{{loop.index}}">
 					{% for asset in entry.images.limit(1).find() %}
-					    <a href="{{ entry.url }}"><div class="image-thumbnail" style="background-image: url('{{ asset.getUrl() }}'); {% if entry.artImageFocalPoint %}background-position: {{entry.artImageFocalPoint}}; {% endif %}"></div></a>
+					    <a href="{{ entry.url }}"><div class="image-thumbnail" style="background-image: url('{{ asset.getUrl() }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
 					{% endfor %}
 					<h3 class="title"><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
 				</div>
@@ -69,12 +72,55 @@
 	</div>
 	<div class="section">
 		<h2 class="title">Web Development</h2>
-		<div class="entry-content">
-			<ul>
-				{% for entry in craft.entries.section('webDevelopment').limit(5).find() %}
-					<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+		<div class="entry-content web-development">
+			<div class="skills-and-certs">
+				<div class="certs-and-conferences">
+					<h4>Certifications</h4>
+					<ul>
+						{% for certification in craft.entries.section('certifications').limit(5).find() %}
+							<li><a href="{{ certification.webPrefix }}{{ certification.webLink }}" target="_blank">{{ certification.title }}</a></li>
+						{% endfor %}
+					</ul>
+					<h4>Recent Conferences</h4>
+					<ul>
+						{% for conference in craft.entries.section('conferences').limit(5).find() %}
+							<li><a href="{{ conference.webPrefix }}{{ conference.webLink }}" target="_blank">{{ conference.title }} {{ conference.date |date('Y') }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="skill-stars">
+				{% for skill in craft.entries.section('skills').order('strength desc') %}
+					<div class="skill">
+						<span class="tag">{{ skill.title }}</span>
+						{% for i in 1..5 %}
+							{% if i <= skill.strength %}
+								<i class="fa fa-star orange" aria-hidden="true"></i>
+							{% else %}
+								<i class="fa fa-star gray" aria-hidden="true"></i>
+							{% endif %}
+						{% endfor %}
+					</div>
 				{% endfor %}
-			</ul>
+				</div>
+			</div>
+			<div class="web-development-portfolio">
+				{% set featuredWebDevelopment = craft.entries.section('webDevelopment').featured('1') %}
+				{% for entry in featuredWebDevelopment.order('startDate desc').limit(2).find() %}
+					<div class="web-development-preview" id="web-development-preview-{{loop.index}}">
+						<h3><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
+						{% for asset in entry.featuredImage.limit(1).find() %}
+						    <div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ asset.getUrl() }}"></a></div>
+						{% endfor %}
+						{% if entry.homepageSnippet %}
+							<div class="snippet">{{ entry.homepageSnippet }}</div>
+						{% elseif entry.indexSnippet %}
+							<div class="snippet">{{ entry.indexSnippet }}</div>
+						{% endif %}
+
+					</div>
+				{% endfor %}
+
+			</div>
 		</div>
 		<div class="view-more"><a href="{{ url('blog') }}">It&nbsp;sounds&nbsp;like&nbsp;you know&nbsp;your&nbsp;stuff.<br>Show&nbsp;me&nbsp;some&nbsp;more.</a></div>
 	</div>

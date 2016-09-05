@@ -16,14 +16,21 @@
 {% block content %}
 
 	{% for entry in craft.entries.section('art').find() %}
-		<article class="art-portfolio">
+		<article class="art-portfolio index">
 			<h2 class="title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
 			<div class="entry-content">
-				{% for asset in entry.images %}
-				    <img src="{{ asset.getUrl() }}" />
-				{% endfor %}
-				<p>{{ entry.artistStatement }}</p>
-				<p>{{ entry.media }}</p>
+				<div class="featured-image {{ entry.orientation }}">
+					{% for asset in entry.images.limit(1) %}
+					    <a href="{{ entry.url }}"><img src="{{ asset.getUrl() }}"/></a>
+					{% endfor %}
+				</div>
+				<div class="art-description">
+					{{ entry.artistStatement }}
+					<div class="media">
+						<h5>Media Type</h5>
+						{{ entry.media }}
+					</div>
+				</div>
 			</div>
 		</article>
 	{% endfor %}

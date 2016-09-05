@@ -21,6 +21,16 @@ body {
 	}
 }
 
+a {
+	color: $accentTwo;
+	text-decoration: none;
+	
+	&:hover {
+		cursor: pointer;
+		text-decoration: none;
+	}
+}
+
 h1, h2, h3, h4, h5, h6 {
 	margin: rem(10px) 0;
 	color: $black;
@@ -57,12 +67,6 @@ p {
 	margin-top: rem(20px);
 	margin-bottom: rem(20px);
 	font-size: rem(20px);
-}
-
-a {
-	&:hover {
-		cursor: pointer;
-	}
 }
 
 textarea {
@@ -126,6 +130,10 @@ form {
 		width: 90%;
 		margin: 0 auto;
 
+		@include media(medium){
+			text-align: center;
+		}
+
 	}
 }
 
@@ -182,12 +190,47 @@ article,
 	background-color: $accentOne;
 	color: $white;
 
+	&:hover {
+	}
+
 	a {
 		color: $white;
 		text-decoration: none;
+		display: block;
 
 		&:hover {
 			text-decoration: none;
+			background-color: $accentOneLight;
+		}
+	}
+}
+
+.continue-reading {
+	margin-bottom: rem(30px);
+}
+
+.tag {
+	padding: rem(4px) rem(7px);
+	background-color: color(gray, lightest);
+	border: 1px solid color(gray, light);
+	border-radius: rem(5px);
+	margin-bottom: rem(10px);
+	font-size: rem(16px);
+	text-align: center;
+}
+
+/******************************************************************
+
+Styles for index pages
+
+*******************************************************************/
+
+.index {
+	.title {
+		padding: 0;
+
+		a {
+			padding: rem(15px) rem(20px);
 		}
 	}
 }

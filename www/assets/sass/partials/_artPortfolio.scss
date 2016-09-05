@@ -2,7 +2,7 @@
 	img {
 		display: block;
 		margin: 0 auto;
-		max-width: 100%;
+		max-width: 75%;
 		height: auto;
 	}
 
@@ -22,6 +22,78 @@
 		p {
 			margin-top: rem(5px);
 			font-size: rem(15px);
+		}
+	}
+
+	/************************************************************
+
+	Index Entries
+
+	*************************************************************/
+
+	&.index {
+
+		.entry-content {
+			display: flex;
+
+			@include media(large){
+				display: block;
+			}
+
+			img {
+				margin: 0;
+			}
+		}
+
+		.featured-image {
+			width: 100%;
+
+			img {
+				max-width: none;
+				width: 100%;
+			}
+		}
+
+		.landscape {
+			margin-right: rem(50px);
+			width: 75%;
+
+			@include media(large){
+				width: 75%;
+				margin: 0 auto;
+			}
+
+			@include media(medium){
+				width: 100%;
+				margin: 0;
+			}
+		}
+
+		.portrait {
+			width: 50%; 
+			margin-left: rem(50px);
+			order: 1;
+
+			@include media(xlarge){
+				width: 60%;
+			}
+
+			@include media(large){
+				margin: 0 auto;
+				width: 65%;
+			}
+
+			@include media(medium){
+				width: 75%;
+			}
+
+			@include media(small){
+				width: 100%;
+			}
+		}
+
+		.art-description {
+			width: 100%;
 		}
 	}
 }

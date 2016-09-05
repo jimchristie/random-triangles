@@ -48,7 +48,7 @@
 
 		@include media(medium){
 			font-size: rem(50px);
-			margin: rem(25px) 0 rem(15px);	
+			margin: rem(25px) 0;	
 			position: relative;
 			top: 0;
 			left: 0;
@@ -60,18 +60,6 @@
 			font-size: 35px;
 		}
 	}
-
-	/*
-	&:after {
-		content: '.'; 
-		display: block; 
-		height: 0; 
-		clear: both; 
-		visibility: hidden; 
-	}
-	*/
-
-
 
 	#site-logo {
 		height: rem(250px);
@@ -89,12 +77,12 @@
 		}
 	}
 
-	nav { 
+	nav {
 		display: block; 
 		position: absolute;
 		top: rem(200px);
 		left: rem(375px);
-		width: calc(100% - 415px);
+		width: calc(100% - 465px);
 
 
 		ul {
@@ -112,20 +100,31 @@
 					padding-top: rem(10px);
 					position: absolute;
 					right: 0;
+					top: rem(-4px);
 
 					@include media(large) {
 						position: relative;
+						top: 0;
 					}
 
 					a {
 						display: inline;
+						position: relative;
+						font-size: rem(25px);
+						top: rem(-4px);
+
+						&:last-child {
+							margin-right: 0;
+						}
 					}
 
 					@include media(medium) {
 						display: flex;
+						padding-top: 0;
 
 						a {
 							flex-grow: 0;
+							top: 0;
 
 							&:first-child {
 								text-align: right;
@@ -138,10 +137,6 @@
 							}
 						}
 					}
-				}
-
-				@include media(medium){
-					width: 100%;
 				}
 
 				a {
@@ -166,14 +161,21 @@
 						border-top: 1px solid $mainDark;
 					}
 				}
+
+
+
+				@include media(large){
+					width: auto;
+				}
+
+				@include media(medium){
+					width: 100%;
+				}
 			}
 
 			@include media(large){
 				display: flex;
-
-				li {
-					flex-grow: 1;
-				}
+				justify-content: space-between;
 			}
 
 			@include media(medium){
@@ -183,13 +185,14 @@
 
 		@include media(xlarge){
 			left: rem(350px);
+			width: calc(100% - 415px);
 		}
 
 		@include media(large){
+			width: 100%;
 			position: static;
 			border: none;
-			width: auto;
-			margin: 0 rem(20px) rem(20px);
+			margin: 0 0 rem(20px);
 		}
 
 		@include media(medium){
@@ -198,5 +201,42 @@
 			top: auto;
 			margin: 0;
 		}
+	}
+
+
+	#main-nav {
+		
+		display: flex; 
+
+		@include media (medium) {
+			display: none;
+		}
+	}
+}
+
+
+#mobile-nav {
+	display: none;
+
+	@include media(medium) {
+		display: block;
+	}
+
+	button {
+		position: absolute;
+		top: rem(-300px);
+		color: $white;
+		padding: rem(7px) rem(10px);
+		border: 1px solid $white;
+		background-color: $main;
+		font-size: rem(18px);
+
+		@include media (small) {
+			top: rem(-305px);
+			left: rem(-10px);
+			font-size: rem(14px);
+		}
+
+
 	}
 }

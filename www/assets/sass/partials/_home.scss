@@ -1,3 +1,9 @@
+.page-title-home {
+	.content {
+		margin-top: rem(15px);
+	}
+}
+
 .entry-content {
 	&.art {
 		display: flex;
@@ -7,15 +13,6 @@
 			flex-wrap: wrap;
 		}
 	}
-}
-
-.image-thumbnail {
-	width: 100%;
-	height: rem(300px);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-
 }
 
 .homepage-featured-post {
@@ -118,7 +115,19 @@
 			color: inherit;
 			display: block;
 			padding: rem(15px);
+
+			&:hover {
+				background-color: inherit;
+			}
 		}
+	}
+
+	.image-thumbnail {
+		width: 100%;
+		height: rem(300px);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 
 	@include media(xlarge){
@@ -186,4 +195,140 @@
 			text-decoration: none;
 		}
 	}
+}
+
+.page-title-home {
+	.web-development-portfolio {
+		img {
+			max-width: 100%;
+			max-height: rem(500px);
+		}
+	}
+}
+
+.web-development {
+
+	display: flex;
+
+	.skills-and-certs {
+		margin-right: rem(15px);
+		flex: 1;
+		flex-grow: 1;
+
+		@include media(large){
+			display: flex;
+		}
+
+		@include media (medium){
+			display: block;
+		}
+	}
+
+	.certs-and-conferences {
+		flex: 1;
+	}
+
+	.skill-stars {
+		flex: 1;
+			margin-top: rem(30px);
+			margin-bottom: rem(20px);
+
+		@include media (large) {
+			margin-top: 0;
+		}
+
+		@include media (medium) {
+			margin-top: rem(40px);
+		}
+	}
+
+	.web-development-portfolio {
+		flex: 1;
+		flex-grow: 4;
+		display: flex;
+
+		@include media(xlarge){
+			flex-grow: 2;
+		}
+
+		@include media (large) {
+			display: block;
+		}
+	}
+
+	h4 {
+		margin-bottom: 0;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		list-style-type: none;
+		margin: 0 0 rem(10px);
+		padding: 0;
+	}
+
+	.skill {
+		.tag {
+			display: inline-block;
+			width: rem(100px);
+			margin-right: rem(5px);
+		}
+
+		.fa {
+			font-size: rem(23px);
+			vertical-align: middle;
+			margin-top: rem(-2px);
+		}
+	}
+
+	@include media(xlarge){
+		flex-wrap: wrap;
+	}
+
+	@include media(large){
+		display: block;
+	}
+}
+
+.web-development-preview {
+	display: inline-block;
+
+	.image-thumbnail {
+		display: inline;
+	}
+
+	.snippet {
+		display: inline;
+	}
+	
+	&:first-child {
+		margin-right: rem(35px);
+
+		@include media(large){
+			margin-right: 0;	
+		}
+
+	}
+
+	&#web-development-preview-2 {
+		@include media(xlarge){
+			display: none;
+		}
+
+		@include media (large) {
+			display: block;
+		}
+	}
+}
+
+.orange {
+	color: $main;
+}
+
+.gray {
+	color: color(gray, light);	
 }

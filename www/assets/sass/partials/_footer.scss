@@ -76,7 +76,16 @@
 }
 
 #copyright {
+	margin-top: rem(45px);
+
+	@include media (small){
+		border-top: 1px solid $white;
+	}
 	p {
 		font-size: rem(14px);
+
+		@include media (small){
+			margin-bottom: rem(10px);
+		}
 	}
 }
