@@ -286,7 +286,11 @@ Styles for index pages
             display: inline;
             position: relative;
             font-size: 2.5rem;
-            top: -0.4rem; }
+            top: -0.4rem;
+            margin-right: 1.5rem; }
+            @media only screen and (max-width: 768px) {
+              #header nav ul li.social-links a {
+                margin-right: 0; } }
             #header nav ul li.social-links a:last-child {
               margin-right: 0; }
           @media only screen and (max-width: 768px) {
@@ -304,7 +308,7 @@ Styles for index pages
                   flex-grow: 1; } }
         #header nav ul li a {
           margin-top: 1rem;
-          margin-right: 1.5rem;
+          margin-right: 3.5rem;
           display: block;
           text-align: center; }
           #header nav ul li a:hover {
