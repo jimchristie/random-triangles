@@ -141,7 +141,11 @@ article,
 .section {
 	background-color: $white;
 	padding: 0;
-	margin-bottom: rem(45px);
+	margin-bottom: rem(75px);
+
+	&:last-child {
+		margin-bottom: rem(45px);
+	}
 }
 
 .entry-content {

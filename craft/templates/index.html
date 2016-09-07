@@ -22,6 +22,20 @@
 
 {% block content %}
 
+{% set featuredWeb = {
+    mode: 'fit',
+    width: 1000,
+    quality: 75,
+    position: 'center-center'
+} %}
+
+{% set featured = {
+	mode: 'fit',
+    width: 750,
+    quality: 75,
+    position: 'center-center'
+} %}
+
 	<article>
 		<h2 class="title">{{ entry.title }}</h2>
 		<div class="entry-content">
@@ -36,7 +50,7 @@
 				{% for entry in featuredPosts.type('business').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 					{% for asset in entry.featuredImage.limit(1).find() %}
-						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl() }}');" ></div></a>
+						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl(featured) }}');" ></div></a>
 					{% endfor %}
 					<div>{{ entry.homepageSnippet }}</div>
 					<div class="continue-reading"><a href="{{ entry.url }}">Continue reading</a></div>
@@ -46,7 +60,7 @@
 				{% for entry in featuredPosts.type('pleasure').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 					{% for asset in entry.featuredImage.limit(1).find() %}
-						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl() }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
+						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl(featured) }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
 					{% endfor %}
 					<div>{{ entry.homepageSnippet }}</div>
 					<div class="continue-reading"><a href="{{ entry.url }}">Continue reading</a></div>
@@ -62,7 +76,7 @@
 			{% for entry in featuredArt.limit(4).find() %}
 				<div class="art-preview" id="art-preview-{{loop.index}}">
 					{% for asset in entry.images.limit(1).find() %}
-					    <a href="{{ entry.url }}"><div class="image-thumbnail" style="background-image: url('{{ asset.getUrl() }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
+					    <a href="{{ entry.url }}"><div class="image-thumbnail" style="background-image: url('{{ asset.getUrl(featured) }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
 					{% endfor %}
 					<h3 class="title"><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
 				</div>
@@ -109,7 +123,7 @@
 					<div class="web-development-preview" id="web-development-preview-{{loop.index}}">
 						<h3><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
 						{% for asset in entry.featuredImage.limit(1).find() %}
-						    <div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ asset.getUrl() }}"></a></div>
+						    <div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ asset.getUrl(featuredWeb) }}"></a></div>
 						{% endfor %}
 						{% if entry.homepageSnippet %}
 							<div class="snippet">{{ entry.homepageSnippet }}</div>

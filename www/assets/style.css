@@ -134,7 +134,10 @@ article,
 .section {
   background-color: #fafafa;
   padding: 0;
-  margin-bottom: 4.5rem; }
+  margin-bottom: 7.5rem; }
+  article:last-child,
+  .section:last-child {
+    margin-bottom: 4.5rem; }
 
 .entry-content {
   padding: 2rem;

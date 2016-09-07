@@ -10,3 +10,7 @@ craft/config/license.key
 
 # sass cache
 www/assets/.sass-cache/**
+
+
+# image transforms
+www/assets/images/_*
