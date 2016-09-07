@@ -10,3 +10,6 @@ craft/config/license.key
 
 # sass cache
 www/assets/.sass-cache/**
+
+# storage
+craft/storage/**
