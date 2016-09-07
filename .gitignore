@@ -8,3 +8,5 @@ craft/config/db.php
 craft/config/license.key
 
 
+# sass cache
+www/assets/.sass-cache/**
