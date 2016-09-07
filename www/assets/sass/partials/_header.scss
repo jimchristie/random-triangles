@@ -112,6 +112,11 @@
 						position: relative;
 						font-size: rem(25px);
 						top: rem(-4px);
+						margin-right: rem(15px);
+
+						@include media (medium) {
+							margin-right: 0;
+						}
 
 						&:last-child {
 							margin-right: 0;
@@ -141,7 +146,7 @@
 
 				a {
 					margin-top: rem(10px);
-					margin-right: rem(15px);
+					margin-right: rem(35px);
 					display: block;
 					text-align: center;
 
