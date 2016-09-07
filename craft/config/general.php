@@ -16,6 +16,7 @@ return array(
     'localhost' => array(
         'devMode' => true,
     	'environmentVariables' => array(
+    		'prod' => false,
 			'basePath' => '/var/www/html/dev/www/',
 	        'baseUrl' => 'http://localhost/dev/www/',
 	    )
@@ -23,6 +24,7 @@ return array(
 
     'dev.jimchristie.me' => array(
         'environmentVariables' => array(
+    		'prod' => true,
 			'basePath' => '/home/www/jimchristie.me/subdomains/dev',
 	        'baseUrl' => 'http://dev.jimchristie.me',
 	    )
