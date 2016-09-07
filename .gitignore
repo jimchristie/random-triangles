@@ -11,6 +11,8 @@ craft/config/license.key
 # sass cache
 www/assets/.sass-cache/**
 
-
 # image transforms
 www/assets/images/_*
+
+# storage
+craft/storage/**
