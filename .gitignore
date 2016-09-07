@@ -2,7 +2,7 @@
 craft/config/db.php
 
 # environment variables, site url
-craft/config/general.php
+# craft/config/general.php
 
 # license
 craft/config/license.key
