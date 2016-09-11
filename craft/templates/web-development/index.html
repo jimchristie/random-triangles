@@ -18,8 +18,8 @@
 	{% if not craft.config.environmentVariables.prod %}
 		<div class="skill-filter">
 			<ul class="skills-technologies">
-				{% for tag in craft.tags.group('default') %}
-			    	<li class="tag">{{ tag.title }}</li>
+				{% for skill in craft.entries.section('skills').order('title') %}
+			    	<li class="tag">{{ skill.title }}</li>
 				{% endfor %}
 			</ul>
 		</div>
@@ -50,13 +50,12 @@
 						<div class="project-url"><a href="{{ entry.webPrefix }}{{ entry.webLink }}">{{  entry.webLink }}</a></div>
 					</div>
 				</div>
-				{% set tags = entry.skills %}
-				{% if tags | length %}
+				{% if entry.skillsLink | length %}
 					<div class="skills">
 					    <h4>How I got it done</h4>
 					    <div class="skills-technologies">
-						    {% for tag in tags %}
-						    	<span class="tag">{{ tag }}</span>
+						    {% for skill in entry.skillsLink.order('title') %}
+						    	<span class="tag">{{ skill.title }}</span>
 						    {% endfor %}
 					    </div>
 					</div>

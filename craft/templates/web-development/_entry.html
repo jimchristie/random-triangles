@@ -41,8 +41,8 @@
 					<div class="skills">
 					    <h4>How I got it done</h4>
 					    <div class="skills-technologies">
-						    {% for tag in tags %}
-						    	<span class="tag">{{ tag }}</span>
+						    {% for skill in entry.skillsLink.order('title') %}
+						    	<span class="tag">{{ skill.title }}</span>
 						    {% endfor %}
 					    </div>
 					</div>
