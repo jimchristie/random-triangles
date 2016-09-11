@@ -29,8 +29,10 @@
 			<h2 class="title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
 			<div class="entry-content">
 				<div class="image-and-summary">
-					{% for asset in entry.featuredImage.limit(1).find() %}
-						<div class="featured-image"><a href="{{ entry.url }}"><img src="{{ asset.getUrl() }}"></a></div>
+
+
+					{% for block in entry.featuredImage %}
+						<div class="featured-image"><a href="{{ entry.url }}"><img src="{{ block.image.first().getUrl() }}"></a></div>
 					{% endfor %}
 					<div class="summary">
 						{% if entry.startDate %}

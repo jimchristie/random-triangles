@@ -19,8 +19,11 @@
 {% block content %}
 	<article class="blog">
 		<div class="entry-content no-border">
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+			{% for block in entry.featuredImage %}
+				<img class="featured-image" src="{{ block.image.first().getUrl() }}">
+			{% endfor %}
 			{{ entry.body }}
+			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
 		</div>
 	</article>
 {% endblock %}

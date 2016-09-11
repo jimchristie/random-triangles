@@ -647,6 +647,12 @@ Styles for index pages
 .gray {
   color: #D8D7D7; }
 
+.blog .featured-image {
+  display: block;
+  max-height: 500px;
+  max-width: 75%;
+  margin: 0 auto; }
+
 .art-portfolio {
   	/************************************************************
   
@@ -714,24 +720,23 @@ Styles for index pages
   margin-right: 5%;
   overflow: hidden;
   width: 60%;
-  max-height: 60rem;
-  line-height: 0; }
+  line-height: 0;
+  border: 1px solid #0a0a0a; }
+  .web-development-portfolio .featured-image.landscape {
+    max-height: 60rem; }
   @media only screen and (max-width: 1400px) {
     .web-development-portfolio .featured-image {
       width: 100%; } }
   @media only screen and (max-width: 1024px) {
     .web-development-portfolio .featured-image {
       width: calc(100% + 40px);
-      margin: -2rem -2rem 2rem; } }
+      margin: -2rem -2rem 2rem;
+      border: none;
+      border-bottom: 1px solid #0a0a0a;
+      border-top: 1px solid #0a0a0a; } }
   .web-development-portfolio .featured-image img {
     width: 100%;
-    height: auto;
-    border: 1px solid #0a0a0a; }
-    @media only screen and (max-width: 1024px) {
-      .web-development-portfolio .featured-image img {
-        border: none;
-        border-bottom: 1px solid #0a0a0a;
-        border-top: 1px solid #0a0a0a; } }
+    height: auto; }
 
 .web-development-preview .image-thumbnail {
   height: 40rem;
@@ -789,6 +794,8 @@ Individual entries
     margin-right: 0;
     width: 125%;
     order: 2; }
+    .project .entry-content .featured-image.portrait {
+      height: 62.5%; }
     @media only screen and (max-width: 1024px) {
       .project .entry-content .featured-image {
         width: 100%;

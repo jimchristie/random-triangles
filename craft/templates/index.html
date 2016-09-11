@@ -49,9 +49,11 @@
 				{% set featuredPosts = craft.entries.section('blog').featured('1') %}
 				{% for entry in featuredPosts.type('business').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-					{% for asset in entry.featuredImage.limit(1).find() %}
-						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl(featured) }}');" ></div></a>
+					{% for block in entry.featuredImage %}
+						<a href="{{ entry.url }}"><div class="featured-image" style="{% if block.image is defined %}background-image: url('{{ block.image.first().getUrl(featured) }}');{% endif %} {% if block.fill is defined %}background-size: {{ block.fill }};{% endif %} {% if block.focalPoint is defined %}background-position: {{ block.focalPoint }}; {% endif %}"></div></a>
 					{% endfor %}
+
+
 					<div>{{ entry.homepageSnippet }}</div>
 					<div class="continue-reading"><a href="{{ entry.url }}">Continue reading</a></div>
 				{% endfor %}
@@ -59,8 +61,8 @@
 			<div class="homepage-featured-post pleasure">
 				{% for entry in featuredPosts.type('pleasure').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-					{% for asset in entry.featuredImage.limit(1).find() %}
-						<a href="{{ entry.url }}"><div class="featured-image" style="background-image: url('{{ asset.getUrl(featured) }}'); {% if entry.focalPoint %}background-position: {{entry.focalPoint}}; {% endif %}"></div></a>
+					{% for block in entry.featuredImage %}
+						<a href="{{ entry.url }}"><div class="featured-image" style="{% if block.image is defined %}background-image: url('{{ block.image.first().getUrl(featured) }}');{% endif %} {% if block.fill is defined %}background-size: {{ block.fill }};{% endif %} {% if block.focalPoint is defined %}background-position: {{ block.focalPoint }}; {% endif %}"></div></a>
 					{% endfor %}
 					<div>{{ entry.homepageSnippet }}</div>
 					<div class="continue-reading"><a href="{{ entry.url }}">Continue reading</a></div>
@@ -122,8 +124,8 @@
 				{% for entry in featuredWebDevelopment.order('startDate desc').limit(2).find() %}
 					<div class="web-development-preview" id="web-development-preview-{{loop.index}}">
 						<h3><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
-						{% for asset in entry.featuredImage.limit(1).find() %}
-						    <div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ asset.getUrl(featuredWeb) }}"></a></div>
+						{% for block in entry.featuredImage %}
+							<div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ block.image.first().getUrl(featuredWeb) }}"></a></div>
 						{% endfor %}
 						{% if entry.homepageSnippet %}
 							<div class="snippet">{{ entry.homepageSnippet }}</div>

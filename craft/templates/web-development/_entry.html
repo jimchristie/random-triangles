@@ -20,8 +20,8 @@
 <article class="web-development-portfolio project">
 	<div class="entry-content">
 		<div class="image-and-summary">
-			{% for asset in entry.featuredImage.limit(1).find() %}
-				<div class="featured-image"><img src="{{ asset.getUrl() }}"></div>
+			{% for block in entry.featuredImage %}
+				<img class="featured-image {{ block.orientation }}" src="{{ block.image.first().getUrl() }}">
 			{% endfor %}
 			<div class="summary">
 				{% if entry.startDate %}

@@ -3,8 +3,12 @@
 		margin-right: 5%;
 		overflow: hidden;
 		width: 60%;
-		max-height: rem(600px);
 		line-height: 0;
+		border: 1px solid $black;
+
+		&.landscape {
+			max-height: rem(600px);
+		}
 
 		@include media(xlarge){
 			width: 100%;
@@ -13,18 +17,15 @@
 		@include media(large){
 			width: calc(100% + 40px);
 			margin: rem(-20px) rem(-20px) rem(20px);
+			border: none;
+			border-bottom: 1px solid $black;
+			border-top: 1px solid $black;
 		}
 
 		img {
 			width: 100%; 
 			height: auto;
-			border: 1px solid $black;
-
-			@include media(large){
-				border: none;
-				border-bottom: 1px solid $black;
-				border-top: 1px solid $black;
-			}
+			
 		}
 	}
 }
@@ -110,6 +111,10 @@ Individual entries
 			margin-right: 0;
 			width: 125%;
 			order: 2;
+
+			&.portrait {
+				height: 62.5%;
+			}
 
 			@include media(large){
 				width: 100%;
