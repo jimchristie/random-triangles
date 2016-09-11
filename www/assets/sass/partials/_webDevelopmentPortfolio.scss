@@ -116,6 +116,10 @@ Individual entries
 				height: 62.5%;
 			}
 
+			&.landscape {
+				height: 100%;
+			}
+
 			@include media(large){
 				width: 100%;
 				margin: 0 0 rem(30px);

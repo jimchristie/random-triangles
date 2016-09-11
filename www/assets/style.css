@@ -796,6 +796,8 @@ Individual entries
     order: 2; }
     .project .entry-content .featured-image.portrait {
       height: 62.5%; }
+    .project .entry-content .featured-image.landscape {
+      height: 100%; }
     @media only screen and (max-width: 1024px) {
       .project .entry-content .featured-image {
         width: 100%;
