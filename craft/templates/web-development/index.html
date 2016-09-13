@@ -13,6 +13,13 @@
 {% extends "_layout" %}
 {% set title = "Web Development" %}
 
+{% set featured = {
+	mode: 'fit',
+    width: 100,
+    quality: 100,
+    position: 'center-center'
+} %}
+
 
 {% block content %}
 	{% if not craft.config.environmentVariables.prod %}

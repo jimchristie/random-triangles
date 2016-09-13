@@ -35,7 +35,8 @@ html {
   height: 100%; }
 
 main, header, footer, section, article, div, h1, h2, h3, h4, h5, h6, p {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative; }
 
 body {
   height: 100%;
@@ -650,7 +651,7 @@ Styles for index pages
 .blog .featured-image {
   display: block;
   max-height: 500px;
-  max-width: 75%;
+  max-width: 100%;
   margin: 0 auto; }
 
 .art-portfolio {
@@ -808,6 +809,62 @@ Individual entries
     font-size: 2rem; }
   .project .entry-content .full-description {
     margin-top: 5rem; }
+
+/********************************************
+
+testimonials
+
+I may move these to their own sass file
+
+
+********************************************/
+.testimonials {
+  margin: 5rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; }
+  @media only screen and (max-width: 540px) {
+    .testimonials {
+      display: block; } }
+
+.testimonial-image {
+  min-width: 10rem;
+  max-width: 10rem;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 5rem;
+  flex: 1;
+  margin-right: 2.5rem; }
+  @media only screen and (max-width: 540px) {
+    .testimonial-image {
+      margin: 0 auto 2.5rem; } }
+
+.testimonial-body-container {
+  font-style: italic;
+  flex: 1;
+  line-height: 1.5;
+  margin: 0 2rem; }
+  .testimonial-body-container p {
+    margin: 0;
+    display: inline; }
+    .testimonial-body-container p.testimonial-name {
+      display: block; }
+  .testimonial-body-container .fa {
+    color: #D8D7D7;
+    position: absolute;
+    font-style: inherit; }
+  .testimonial-body-container .fa-quote-left {
+    top: -1rem;
+    left: -1.75rem; }
+  .testimonial-body-container .fa-quote-right {
+    bottom: 1rem;
+    right: -2.25rem; }
+
+.icon-body-container {
+  display: inline; }
+
+.testimonial-body {
+  display: inline; }
 
 #contact-form {
   margin: -2rem 2rem 3rem; }

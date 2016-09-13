@@ -16,6 +16,14 @@
 {% extends "_layout" %}
 {% set title = entry.title %}
 
+
+{% set small = {
+	mode: 'fit',
+    width: 100,
+    quality: 100,
+    position: 'center-center'
+} %}
+
 {% block content %}
 <article class="web-development-portfolio project">
 	<div class="entry-content">
@@ -36,8 +44,7 @@
 					</div>
 				{% endif %}
 				<div class="project-url"><a href="{{ entry.webPrefix }}{{ entry.webLink }}" target="_blank">{{  entry.webLink }}</a></div>
-				{% set tags = entry.skills %}
-				{% if tags | length %}
+				{% if entry.skillsLink | length %}
 					<div class="skills">
 					    <h4>How I got it done</h4>
 					    <div class="skills-technologies">
@@ -49,6 +56,17 @@
 				{% endif %}
 			</div>
 		</div>
+		{% if entry.testimonialsLink | length %}
+			<div class="testimonials">
+				{% for testimonial in entry.testimonialsLink.limit(1) %}
+					{% for asset in testimonial.images %}
+						<div class="testimonial-image" style="background-image: url('{{ asset.getUrl(small) }}')"></div>
+					{% endfor %}
+					<div class="testimonial-body-container"><div class="icon-body-container"><i class="fa fa-quote-left" aria-hidden="true"></i><div class="testimonial-body">{{testimonial.body}}</div><i class="fa fa-quote-right" aria-hidden="true"></i></div><p class="testimonial-name">- {{ testimonial.title }}</p></div>
+
+				{% endfor %}
+			</div>
+		{% endif %}
 		<div class="full-description">{{ entry.body }}</div>
 	</div>
 </article>

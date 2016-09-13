@@ -141,3 +141,81 @@ Individual entries
 		}
 	}
 }
+
+
+/********************************************
+
+testimonials
+
+I may move these to their own sass file
+
+
+********************************************/
+
+.testimonials {
+	margin: rem(50px) auto 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	@include media(small){
+		display: block;
+	}
+}
+
+.testimonial-image {
+	min-width: rem(100px);
+	max-width: rem(100px);
+	height: rem(100px);
+	width: rem(100px);
+	border-radius: rem(50px);
+	flex: 1;
+	margin-right: rem(25px);
+
+	@include media(small){
+		margin: 0 auto rem(25px);
+
+	}
+}
+
+.testimonial-body-container {
+	font-style: italic;
+	flex: 1;
+  	line-height: 1.5;
+
+  	margin: 0 rem(20px);
+
+	p {
+		margin: 0;
+		display: inline;
+
+
+
+		&.testimonial-name {
+			display: block;
+		}
+	}
+
+	.fa {
+		color: color(gray, light);
+		position: absolute;
+		font-style: inherit;
+	}
+
+	.fa-quote-left {
+		top: rem(-10px);
+		left: rem(-17.5px);
+	}
+
+	.fa-quote-right {
+		bottom: rem(10px);
+		right: rem(-22.5px);
+	}
+}
+
+.icon-body-container {
+	display: inline;
+}
+.testimonial-body {
+  display: inline;
+}
