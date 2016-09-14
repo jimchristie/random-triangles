@@ -13,6 +13,13 @@
 {% extends "_layout" %}
 {% set title = "Artworks" %}
 
+{% set featured = {
+	mode: 'fit',
+    width: 1000,
+    quality: 100,
+    position: 'center-center'
+} %}
+
 {% block content %}
 
 	{% for entry in craft.entries.section('art').find() %}
@@ -21,7 +28,7 @@
 			<div class="entry-content">
 				<div class="featured-image {{ entry.orientation }}">
 					{% for asset in entry.images.limit(1) %}
-					    <a href="{{ entry.url }}"><img src="{{ asset.getUrl() }}"/></a>
+					    <a href="{{ entry.url }}"><img src="{{ asset.getUrl(featured) }}"/></a>
 					{% endfor %}
 				</div>
 				<div class="art-description">

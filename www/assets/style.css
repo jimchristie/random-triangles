@@ -142,9 +142,9 @@ article,
 
 .entry-content {
   padding: 2rem;
-  border-bottom: 1px solid #0a0a0a;
-  border-left: 1px solid #0a0a0a;
-  border-right: 1px solid #0a0a0a; }
+  border-bottom: 1px solid #cac8c7;
+  border-left: 1px solid #cac8c7;
+  border-right: 1px solid #cac8c7; }
   .entry-content.no-bottom-border {
     border-bottom: none; }
   .entry-content.no-border {
@@ -190,6 +190,13 @@ article,
   margin-bottom: 1rem;
   font-size: 1.6rem;
   text-align: center; }
+
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
 
 /******************************************************************
 
@@ -299,6 +306,10 @@ Styles for index pages
               margin-right: 0; }
           @media only screen and (max-width: 768px) {
             #header nav ul li.social-links {
+              display: -webkit-box;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: -webkit-flex;
               display: flex;
               padding-top: 0; }
               #header nav ul li.social-links a {
@@ -334,6 +345,10 @@ Styles for index pages
             width: 100%; } }
       @media only screen and (max-width: 1024px) {
         #header nav ul {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
           display: flex;
           justify-content: space-between; } }
       @media only screen and (max-width: 768px) {
@@ -356,6 +371,10 @@ Styles for index pages
         top: auto;
         margin: 0; } }
   #header #main-nav {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex; }
     @media only screen and (max-width: 768px) {
       #header #main-nav {
@@ -389,6 +408,10 @@ Styles for index pages
   position: relative;
   clear: both; }
   #footer .footer-nav {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; }
@@ -406,6 +429,10 @@ Styles for index pages
     color: #fafafa;
     text-decoration: none; }
   #footer .footer-nav-item {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
     flex: 1; }
     @media only screen and (max-width: 540px) {
       #footer .footer-nav-item {
@@ -438,6 +465,10 @@ Styles for index pages
   margin-top: 1.5rem; }
 
 .entry-content.art {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   padding: 0; }
   @media only screen and (max-width: 1024px) {
@@ -566,66 +597,118 @@ Styles for index pages
   max-width: 100%;
   max-height: 50rem; }
 
-.web-development {
-  display: flex; }
-  .web-development .skills-and-certs {
-    margin-right: 1.5rem;
-    flex: 1;
-    flex-grow: 1; }
-    @media only screen and (max-width: 1024px) {
-      .web-development .skills-and-certs {
-        display: flex; } }
-    @media only screen and (max-width: 768px) {
-      .web-development .skills-and-certs {
-        display: block; } }
-  .web-development .certs-and-conferences {
-    flex: 1; }
-  .web-development .skill-stars {
-    flex: 1;
-    margin-top: 3rem;
-    margin-bottom: 2rem; }
-    @media only screen and (max-width: 1024px) {
-      .web-development .skill-stars {
-        margin-top: 0; } }
-    @media only screen and (max-width: 768px) {
-      .web-development .skill-stars {
-        margin-top: 4rem; } }
-  .web-development .web-development-portfolio {
-    flex: 1;
-    flex-grow: 4;
-    display: flex; }
-    @media only screen and (max-width: 1400px) {
-      .web-development .web-development-portfolio {
-        flex-grow: 2; } }
-    @media only screen and (max-width: 1024px) {
-      .web-development .web-development-portfolio {
-        display: block; } }
-  .web-development h4 {
-    margin-bottom: 0; }
-  .web-development ul {
-    margin: 0;
-    padding: 0; }
-  .web-development li {
-    list-style-type: none;
-    margin: 0 0 1rem;
-    padding: 0; }
-  .web-development .skill .tag {
-    display: inline-block;
-    width: 10rem;
-    margin-right: 0.5rem; }
-  .web-development .skill .fa {
-    font-size: 2.3rem;
-    vertical-align: middle;
-    margin-top: -0.2rem; }
-  @media only screen and (max-width: 1400px) {
-    .web-development {
-      flex-wrap: wrap; } }
+@media only screen and (max-width: 1024px) {
+  .web-development .certs-conferences-portfolio {
+    display: block; } }
+.web-development .certs-and-conferences {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
   @media only screen and (max-width: 1024px) {
-    .web-development {
+    .web-development .certs-and-conferences {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex; } }
+.web-development .certs {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-bottom: 5rem; }
+.web-development .conferences {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+.web-development .skills-and-certs {
+  margin-right: 1.5rem;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  flex-grow: 1; }
+  @media only screen and (max-width: 1024px) {
+    .web-development .skills-and-certs {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex; } }
+  @media only screen and (max-width: 768px) {
+    .web-development .skills-and-certs {
       display: block; } }
+.web-development .skill-group {
+  margin-right: 5rem; }
+.web-development .skill-stars {
+  flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-top: 3rem;
+  margin-bottom: 2rem; }
+  @media only screen and (max-width: 1024px) {
+    .web-development .skill-stars {
+      margin-top: 0; } }
+  @media only screen and (max-width: 768px) {
+    .web-development .skill-stars {
+      margin-top: 4rem; } }
+.web-development .web-development-portfolio {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  flex-grow: 4;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  @media only screen and (max-width: 1400px) {
+    .web-development .web-development-portfolio {
+      flex-grow: 2; } }
+  @media only screen and (max-width: 1024px) {
+    .web-development .web-development-portfolio {
+      display: block; } }
+.web-development h4 {
+  margin-bottom: 0; }
+.web-development ul {
+  margin: 0;
+  padding: 0; }
+.web-development li {
+  list-style-type: none;
+  margin: 0 0 1rem;
+  padding: 0; }
+.web-development .skill .tag {
+  display: inline-block;
+  width: 10rem;
+  margin-right: 0.5rem; }
+.web-development .skill .fa {
+  font-size: 2.3rem;
+  vertical-align: middle;
+  margin-top: -0.2rem; }
+@media only screen and (max-width: 1400px) {
+  .web-development {
+    flex-wrap: wrap; } }
+@media only screen and (max-width: 1024px) {
+  .web-development {
+    display: block; } }
 
 .web-development-preview {
-  display: inline-block; }
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
   .web-development-preview .image-thumbnail {
     display: inline; }
   .web-development-preview .snippet {
@@ -640,7 +723,8 @@ Styles for index pages
       display: none; } }
   @media only screen and (max-width: 1024px) {
     .web-development-preview#web-development-preview-2 {
-      display: block; } }
+      display: block;
+      display: none; } }
 
 .orange {
   color: #ff9c00; }
@@ -650,9 +734,20 @@ Styles for index pages
 
 .blog .featured-image {
   display: block;
-  max-height: 500px;
-  max-width: 100%;
   margin: 0 auto; }
+  .blog .featured-image.landscape {
+    max-width: 60rem; }
+    @media only screen and (max-width: 1024px) {
+      .blog .featured-image.landscape {
+        max-width: 50rem; } }
+    @media only screen and (max-width: 768px) {
+      .blog .featured-image.landscape {
+        max-width: 100%; } }
+  .blog .featured-image.portrait {
+    max-height: 50rem; }
+    @media only screen and (max-width: 768px) {
+      .blog .featured-image.portrait {
+        max-width: 100%; } }
 
 .art-portfolio {
   	/************************************************************
@@ -675,6 +770,10 @@ Styles for index pages
     margin-top: 0.5rem;
     font-size: 1.5rem; }
   .art-portfolio.index .entry-content {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex; }
     @media only screen and (max-width: 1024px) {
       .art-portfolio.index .entry-content {
@@ -700,6 +799,10 @@ Styles for index pages
   .art-portfolio.index .portrait {
     width: 50%;
     margin-left: 5rem;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
     order: 1; }
     @media only screen and (max-width: 1400px) {
       .art-portfolio.index .portrait {
@@ -747,6 +850,10 @@ Styles for index pages
   margin-top: 5rem; }
 
 .skills-technologies {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -765,6 +872,10 @@ Styles for index pages
   margin-top: 0; }
 
 .image-and-summary {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex; }
   .image-and-summary .summary {
     width: 40%; }
@@ -785,6 +896,10 @@ Individual entries
   border: none; }
   .project .entry-content .summary {
     margin-right: 5%;
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
     order: 1;
     width: 50%; }
     @media only screen and (max-width: 1024px) {
@@ -794,6 +909,10 @@ Individual entries
   .project .entry-content .featured-image {
     margin-right: 0;
     width: 125%;
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
     order: 2; }
     .project .entry-content .featured-image.portrait {
       height: 62.5%; }
@@ -820,6 +939,10 @@ I may move these to their own sass file
 ********************************************/
 .testimonials {
   margin: 5rem auto 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
   align-items: center; }
@@ -833,6 +956,10 @@ I may move these to their own sass file
   height: 10rem;
   width: 10rem;
   border-radius: 5rem;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   margin-right: 2.5rem; }
   @media only screen and (max-width: 540px) {
@@ -841,6 +968,10 @@ I may move these to their own sass file
 
 .testimonial-body-container {
   font-style: italic;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   line-height: 1.5;
   margin: 0 2rem; }

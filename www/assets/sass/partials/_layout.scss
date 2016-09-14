@@ -151,9 +151,9 @@ article,
 
 .entry-content {
 	padding: rem(20px);
-	border-bottom: 1px solid $black;
-	border-left: 1px solid $black;
-	border-right: 1px solid $black;
+	border-bottom: 1px solid color(gray);
+	border-left: 1px solid color(gray);
+	border-right: 1px solid color(gray);
 
 	&.no-bottom-border {
 		border-bottom: none;
@@ -222,6 +222,10 @@ article,
 	margin-bottom: rem(10px);
 	font-size: rem(16px);
 	text-align: center;
+}
+
+.flex {
+	@include flexbox();
 }
 
 /******************************************************************

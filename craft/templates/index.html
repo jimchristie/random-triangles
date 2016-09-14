@@ -23,10 +23,11 @@
 {% block content %}
 
 {% set featuredWeb = {
-    mode: 'fit',
+    mode: 'crop',
     width: 1000,
+    height: 500,
     quality: 75,
-    position: 'center-center'
+    position: 'top-center'
 } %}
 
 {% set featured = {
@@ -89,54 +90,134 @@
 	<div class="section index">
 		<h2 class="title"><a href="{{ url('web-development') }}">Web Development</a></h2>
 		<div class="entry-content web-development">
-			<div class="skills-and-certs">
+			<div class="flex certs-conferences-portfolio">
 				<div class="certs-and-conferences">
-					<h4>Certifications</h4>
-					<ul>
-						{% for certification in craft.entries.section('certifications').limit(5).find() %}
-							<li><a href="{{ certification.webPrefix }}{{ certification.webLink }}" target="_blank">{{ certification.title }}</a></li>
-						{% endfor %}
-					</ul>
+					<div class="certs">
+						<h4>Certifications</h4>
+						<ul>
+							{% for certification in craft.entries.section('certifications').limit(5).find() %}
+								<li><a href="{{ certification.webPrefix }}{{ certification.webLink }}" target="_blank">{{ certification.title }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="conferences">
 					<h4>Recent Conferences</h4>
-					<ul>
-						{% for conference in craft.entries.section('conferences').limit(5).find() %}
-							<li><a href="{{ conference.webPrefix }}{{ conference.webLink }}" target="_blank">{{ conference.title }} {{ conference.date |date('Y') }}</a></li>
-						{% endfor %}
-					</ul>
+						<ul>
+							{% for conference in craft.entries.section('conferences').limit(5).find() %}
+								<li><a href="{{ conference.webPrefix }}{{ conference.webLink }}" target="_blank">{{ conference.title }} {{ conference.date |date('Y') }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
 				</div>
-				<div class="skill-stars">
-				{% for skill in craft.entries.section('skills').order('strength desc') %}
-					<div class="skill">
-						<span class="tag">{{ skill.title }}</span>
-						{% for i in 1..5 %}
-							{% if i <= skill.strength %}
-								<i class="fa fa-star orange" aria-hidden="true"></i>
-							{% else %}
-								<i class="fa fa-star gray" aria-hidden="true"></i>
+				
+
+				<div class="web-development-portfolio">
+					{% set featuredWebDevelopment = craft.entries.section('webDevelopment').featured('1') %}
+					{% for entry in featuredWebDevelopment.order('startDate desc').limit(2).find() %}
+						<div class="web-development-preview" id="web-development-preview-{{loop.index}}">
+							<h3><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
+							{% for block in entry.featuredImage %}
+								<div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ block.image.first().getUrl(featuredWeb) }}"></a></div>
+							{% endfor %}
+							{% if entry.homepageSnippet %}
+								<div class="snippet">{{ entry.homepageSnippet }}</div>
+							{% elseif entry.indexSnippet %}
+								<div class="snippet">{{ entry.indexSnippet }}</div>
 							{% endif %}
-						{% endfor %}
-					</div>
-				{% endfor %}
+
+						</div>
+					{% endfor %}
 				</div>
 			</div>
-			<div class="web-development-portfolio">
-				{% set featuredWebDevelopment = craft.entries.section('webDevelopment').featured('1') %}
-				{% for entry in featuredWebDevelopment.order('startDate desc').limit(2).find() %}
-					<div class="web-development-preview" id="web-development-preview-{{loop.index}}">
-						<h3><a href="{{ entry.getUrl() }}">{{entry.title}}</a></h3>
-						{% for block in entry.featuredImage %}
-							<div class="image-thumbnail"><a href="{{ entry.url }}"><img src="{{ block.image.first().getUrl(featuredWeb) }}"></a></div>
+
+
+
+
+
+				<div class="skill-stars flex">
+					<div class="skill-group">
+						<h4>Agile</h4>
+						{% for skill in craft.entries.section('skills').type('methodologies').order('strength desc').limit(5) %}
+							<div class="skill">
+								<span class="tag">{{ skill.title }}</span>
+								{% for i in 1..5 %}
+									{% if i <= skill.strength %}
+										<i class="fa fa-star orange" aria-hidden="true"></i>
+									{% else %}
+										<i class="fa fa-star gray" aria-hidden="true"></i>
+									{% endif %}
+								{% endfor %}
+							</div>
 						{% endfor %}
-						{% if entry.homepageSnippet %}
-							<div class="snippet">{{ entry.homepageSnippet }}</div>
-						{% elseif entry.indexSnippet %}
-							<div class="snippet">{{ entry.indexSnippet }}</div>
-						{% endif %}
-
 					</div>
-				{% endfor %}
+					<div class="skill-group">
+						<h4>Tools &amp; Technologies</h4>
+						{% for skill in craft.entries.section('skills').type('technologies').order('strength desc').limit(5) %}
+							<div class="skill">
+								<span class="tag">{{ skill.title }}</span>
+								{% for i in 1..5 %}
+									{% if i <= skill.strength %}
+										<i class="fa fa-star orange" aria-hidden="true"></i>
+									{% else %}
+										<i class="fa fa-star gray" aria-hidden="true"></i>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endfor %}
+					</div>
+					<div class="skill-group">
+						<h4>Content Management</h4>
+						{% for skill in craft.entries.section('skills').type('contentManagementSystems').order('strength desc').limit(5) %}
+							<div class="skill">
+								<span class="tag">{{ skill.title }}</span>
+								{% for i in 1..5 %}
+									{% if i <= skill.strength %}
+										<i class="fa fa-star orange" aria-hidden="true"></i>
+									{% else %}
+										<i class="fa fa-star gray" aria-hidden="true"></i>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endfor %}
+					</div>
+					<div class="skill-group">
+					<h4>Languages</h4>
+						{% for skill in craft.entries.section('skills').type('languages').order('strength desc').limit(5) %}
+							<div class="skill">
+								<span class="tag">{{ skill.title }}</span>
+								{% for i in 1..5 %}
+									{% if i <= skill.strength %}
+										<i class="fa fa-star orange" aria-hidden="true"></i>
+									{% else %}
+										<i class="fa fa-star gray" aria-hidden="true"></i>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endfor %}
+					</div>
+					<div class="skill-group">
+						<h4>Frameworks</h4>
+						{% for skill in craft.entries.section('skills').type('frameworks').order('strength desc').limit(5) %}
+							<div class="skill">
+								<span class="tag">{{ skill.title }}</span>
+								{% for i in 1..5 %}
+									{% if i <= skill.strength %}
+										<i class="fa fa-star orange" aria-hidden="true"></i>
+									{% else %}
+										<i class="fa fa-star gray" aria-hidden="true"></i>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 
-			</div>
+
+
+
+
+
+
 		</div>
 		<div class="view-more"><a href="{{ url('web-development') }}">It&nbsp;sounds&nbsp;like&nbsp;you know&nbsp;your&nbsp;stuff.<br>Show&nbsp;me&nbsp;some&nbsp;more.</a></div>
 	</div>

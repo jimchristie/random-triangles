@@ -10,7 +10,7 @@
 	clear: both;
 
 	.footer-nav {
-		display: flex;
+		@include flexbox();
 		flex-direction: row;
 		flex-wrap: wrap;
 	}
@@ -43,7 +43,7 @@
 	}
 
 	.footer-nav-item {
-		flex: 1;
+		@include flex(1);
 
 		@include media(small){
 			width: 100%;

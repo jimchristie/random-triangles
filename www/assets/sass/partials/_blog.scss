@@ -1,8 +1,27 @@
 .blog {
 	.featured-image {
 		display: block;
-		max-height: 500px;
-		max-width: 100%;
 		margin: 0 auto;
+
+		&.landscape {
+			max-width: rem(600px);
+
+			@include media (large){
+				max-width: rem(500px)
+			}
+
+
+			@include media (medium){
+				max-width: 100%;
+			}
+		}
+
+		&.portrait {
+			max-height: rem(500px);
+
+			@include media (medium){
+				max-width: 100%;
+			}
+		}
 	}
 }

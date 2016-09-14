@@ -34,7 +34,7 @@
 	&.index {
 
 		.entry-content {
-			display: flex;
+			@include flexbox();
 
 			@include media(large){
 				display: block;
@@ -72,8 +72,8 @@
 		.portrait {
 			width: 50%; 
 			margin-left: rem(50px);
-			order: 1;
-
+			@include order(1);
+			
 			@include media(xlarge){
 				width: 60%;
 			}

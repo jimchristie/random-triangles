@@ -6,7 +6,7 @@
 
 .entry-content {
 	&.art {
-		display: flex;
+		@include flexbox();
 		padding: 0;
 
 		@include media(large){
@@ -208,15 +208,37 @@
 
 .web-development {
 
-	display: flex;
+	.certs-conferences-portfolio {
+		@include media(large){
+			display: block;
+		}
+	}
+
+
+	.certs-and-conferences {
+		@include flex(1);
+
+		@include media(large){
+			@include flexbox();
+		}
+	}
+
+	.certs {
+		@include flex(1);
+		margin-bottom: rem(50px);
+	}
+
+	.conferences {
+		@include flex(1);
+	}
 
 	.skills-and-certs {
 		margin-right: rem(15px);
-		flex: 1;
+		@include flex(1);
 		flex-grow: 1;
 
 		@include media(large){
-			display: flex;
+			@include flexbox();
 		}
 
 		@include media (medium){
@@ -224,12 +246,15 @@
 		}
 	}
 
-	.certs-and-conferences {
-		flex: 1;
+	.skill-group {
+		margin-right: rem(50px);
 	}
 
 	.skill-stars {
-		flex: 1;
+
+		flex-wrap: wrap;
+
+		@include flex(1);
 			margin-top: rem(30px);
 			margin-bottom: rem(20px);
 
@@ -243,9 +268,9 @@
 	}
 
 	.web-development-portfolio {
-		flex: 1;
+		@include flex(1);
 		flex-grow: 4;
-		display: flex;
+		@include flexbox();
 
 		@include media(xlarge){
 			flex-grow: 2;
@@ -295,7 +320,7 @@
 }
 
 .web-development-preview {
-	display: inline-block;
+	@include flex(1);
 
 	.image-thumbnail {
 		display: inline;
@@ -321,6 +346,7 @@
 
 		@include media (large) {
 			display: block;
+			display: none;
 		}
 	}
 }

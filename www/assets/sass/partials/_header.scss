@@ -124,7 +124,7 @@
 					}
 
 					@include media(medium) {
-						display: flex;
+						@include flexbox();
 						padding-top: 0;
 
 						a {
@@ -179,7 +179,7 @@
 			}
 
 			@include media(large){
-				display: flex;
+				@include flexbox();
 				justify-content: space-between;
 			}
 
@@ -211,7 +211,7 @@
 
 	#main-nav {
 		
-		display: flex; 
+		@include flexbox();
 
 		@include media (medium) {
 			display: none;
