@@ -208,6 +208,43 @@ Styles for index pages
   .index .title a {
     padding: 1.5rem 2rem; }
 
+/****************************************************************
+
+Blockquotes
+
+*****************************************************************/
+.blockquote-body-container {
+  font-style: italic;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 1.5;
+  width: 80%;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto; }
+  .blockquote-body-container p {
+    margin: 0;
+    display: inline; }
+  .blockquote-body-container .fa {
+    color: #D8D7D7;
+    position: absolute;
+    font-style: inherit; }
+  .blockquote-body-container .fa-quote-left {
+    top: -1rem;
+    left: -1.75rem; }
+  .blockquote-body-container .fa-quote-right {
+    bottom: 1rem;
+    right: -2.25rem; }
+
+.blockquote-icon-body-container {
+  display: inline; }
+
+.blockquote-body {
+  display: inline; }
+
 #header {
   padding: 2.5rem 5% 0;
   display: block;
@@ -613,19 +650,24 @@ Styles for index pages
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex; } }
+  @media only screen and (max-width: 540px) {
+    .web-development .certs-and-conferences {
+      display: block; } }
 .web-development .certs {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  margin-bottom: 5rem; }
+  margin-bottom: 5rem;
+  margin-right: 2rem; }
 .web-development .conferences {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
-  flex: 1; }
+  flex: 1;
+  margin-bottom: 5rem; }
 .web-development .skills-and-certs {
   margin-right: 1.5rem;
   -webkit-box-flex: 1;
@@ -646,6 +688,9 @@ Styles for index pages
       display: block; } }
 .web-development .skill-group {
   margin-right: 5rem; }
+  .web-development .skill-group h4 {
+    margin-bottom: 1rem;
+    margin-left: 0.2rem; }
 .web-development .skill-stars {
   flex-wrap: wrap;
   -webkit-box-flex: 1;
@@ -732,22 +777,32 @@ Styles for index pages
 .gray {
   color: #D8D7D7; }
 
-.blog .featured-image {
+.blog img {
   display: block;
-  margin: 0 auto; }
-  .blog .featured-image.landscape {
+  margin: 0 auto;
+  max-width: 60rem; }
+  @media only screen and (max-width: 1024px) {
+    .blog img {
+      max-width: 50rem; } }
+  @media only screen and (max-width: 768px) {
+    .blog img {
+      max-width: 100%; } }
+  .blog img.landscape {
     max-width: 60rem; }
     @media only screen and (max-width: 1024px) {
-      .blog .featured-image.landscape {
+      .blog img.landscape {
         max-width: 50rem; } }
     @media only screen and (max-width: 768px) {
-      .blog .featured-image.landscape {
+      .blog img.landscape {
         max-width: 100%; } }
-  .blog .featured-image.portrait {
+  .blog img.portrait {
     max-height: 50rem; }
     @media only screen and (max-width: 768px) {
-      .blog .featured-image.portrait {
+      .blog img.portrait {
         max-width: 100%; } }
+
+.posted-on-date {
+  font-size: 1.6rem; }
 
 .art-portfolio {
   	/************************************************************
@@ -931,7 +986,7 @@ Individual entries
 
 /********************************************
 
-testimonials
+blockquotes
 
 I may move these to their own sass file
 
@@ -946,6 +1001,11 @@ I may move these to their own sass file
   display: flex;
   flex-wrap: wrap;
   align-items: center; }
+  .testimonials .blockquote-body-container {
+    margin: 0;
+    width: auto; }
+    .testimonials .blockquote-body-container p.testimonial-name {
+      display: block; }
   @media only screen and (max-width: 540px) {
     .testimonials {
       display: block; } }
@@ -966,36 +1026,8 @@ I may move these to their own sass file
     .testimonial-image {
       margin: 0 auto 2.5rem; } }
 
-.testimonial-body-container {
-  font-style: italic;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  line-height: 1.5;
-  margin: 0 2rem; }
-  .testimonial-body-container p {
-    margin: 0;
-    display: inline; }
-    .testimonial-body-container p.testimonial-name {
-      display: block; }
-  .testimonial-body-container .fa {
-    color: #D8D7D7;
-    position: absolute;
-    font-style: inherit; }
-  .testimonial-body-container .fa-quote-left {
-    top: -1rem;
-    left: -1.75rem; }
-  .testimonial-body-container .fa-quote-right {
-    bottom: 1rem;
-    right: -2.25rem; }
-
-.icon-body-container {
-  display: inline; }
-
-.testimonial-body {
-  display: inline; }
+.testimonial-name {
+  font-style: normal; }
 
 #contact-form {
   margin: -2rem 2rem 3rem; }

@@ -1,7 +1,17 @@
 .blog {
-	.featured-image {
+	img {
 		display: block;
 		margin: 0 auto;
+		max-width: rem(600px);
+
+		@include media (large){
+			max-width: rem(500px)
+		}
+
+
+		@include media (medium){
+			max-width: 100%;
+		}
 
 		&.landscape {
 			max-width: rem(600px);
@@ -24,4 +34,8 @@
 			}
 		}
 	}
+}
+
+.posted-on-date {
+	font-size: rem(16px);
 }

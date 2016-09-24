@@ -62,7 +62,7 @@
 					{% for asset in testimonial.images %}
 						<div class="testimonial-image" style="background-image: url('{{ asset.getUrl(small) }}')"></div>
 					{% endfor %}
-					<div class="testimonial-body-container"><div class="icon-body-container"><i class="fa fa-quote-left" aria-hidden="true"></i><div class="testimonial-body">{{testimonial.body}}</div><i class="fa fa-quote-right" aria-hidden="true"></i></div><p class="testimonial-name">- {{ testimonial.title }}</p></div>
+					<div class="blockquote-body-container"><div class="blockquote-icon-body-container"><i class="fa fa-quote-left" aria-hidden="true"></i><div class="blockquote-body">{{testimonial.body}}</div><i class="fa fa-quote-right" aria-hidden="true"></i></div><p class="testimonial-name">{{ testimonial.title }}{% if testimonial.jobTitle %} <strong>&middot;</strong> {{ testimonial.jobTitle }}{% endif %}{% if testimonial.company %} <strong>&middot;</strong> {{ testimonial.company }} {% endif %}</p></div>
 
 				{% endfor %}
 			</div>

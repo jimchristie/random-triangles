@@ -20,10 +20,10 @@
 	<article class="blog">
 		<div class="entry-content no-border">
 			{% for block in entry.featuredImage %}
-				<img class="featured-image {{ block.image.first().orientation }}" src="{{ block.image.first().getUrl() }}">
+				<p><img class="image featured-image {{ block.image.first().orientation }}" src="{{ block.image.first().getUrl() }}"></p>
 			{% endfor %}
 			{{ entry.body }}
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+			<p class="posted-on-date"><em>Posted on {{ entry.postDate.format('F d, Y') }}</em></p>
 		</div>
 	</article>
 {% endblock %}

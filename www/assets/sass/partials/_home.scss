@@ -221,15 +221,21 @@
 		@include media(large){
 			@include flexbox();
 		}
+
+		@include media(small){
+			display: block;
+		}
 	}
 
 	.certs {
 		@include flex(1);
 		margin-bottom: rem(50px);
+		margin-right: rem(20px);
 	}
 
 	.conferences {
 		@include flex(1);
+		margin-bottom: rem(50px);
 	}
 
 	.skills-and-certs {
@@ -248,6 +254,11 @@
 
 	.skill-group {
 		margin-right: rem(50px);
+
+		h4 {
+			margin-bottom: rem(10px);
+			margin-left: rem(2px);
+		}
 	}
 
 	.skill-stars {

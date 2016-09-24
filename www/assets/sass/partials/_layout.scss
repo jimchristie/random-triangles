@@ -243,3 +243,47 @@ Styles for index pages
 		}
 	}
 }
+
+/****************************************************************
+
+Blockquotes
+
+*****************************************************************/
+
+
+.blockquote-body-container {
+	font-style: italic;
+	@include flex(1);
+  	line-height: 1.5;
+  	width: 80%;
+  	margin: 0;
+  	@include horizonal-center();
+
+	p {
+		margin: 0;
+		display: inline;
+	}
+
+	.fa {
+		color: color(gray, light);
+		position: absolute;
+		font-style: inherit;
+	}
+
+	.fa-quote-left {
+		top: rem(-10px);
+		left: rem(-17.5px);
+	}
+
+	.fa-quote-right {
+		bottom: rem(10px);
+		right: rem(-22.5px);
+	}
+}
+
+.blockquote-icon-body-container {
+	display: inline;
+}
+.blockquote-body {
+  display: inline;
+}

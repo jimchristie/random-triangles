@@ -145,7 +145,7 @@ Individual entries
 
 /********************************************
 
-testimonials
+blockquotes
 
 I may move these to their own sass file
 
@@ -157,6 +157,19 @@ I may move these to their own sass file
 	@include flexbox();
 	flex-wrap: wrap;
 	align-items: center;
+
+
+
+	.blockquote-body-container {
+		margin: 0;
+		width: auto;
+
+		p {
+			&.testimonial-name {
+				display: block;
+			}
+		}
+	}
 
 	@include media(small){
 		display: block;
@@ -178,44 +191,6 @@ I may move these to their own sass file
 	}
 }
 
-.testimonial-body-container {
-	font-style: italic;
-	@include flex(1);
-  	line-height: 1.5;
-
-  	margin: 0 rem(20px);
-
-	p {
-		margin: 0;
-		display: inline;
-
-
-
-		&.testimonial-name {
-			display: block;
-		}
-	}
-
-	.fa {
-		color: color(gray, light);
-		position: absolute;
-		font-style: inherit;
-	}
-
-	.fa-quote-left {
-		top: rem(-10px);
-		left: rem(-17.5px);
-	}
-
-	.fa-quote-right {
-		bottom: rem(10px);
-		right: rem(-22.5px);
-	}
-}
-
-.icon-body-container {
-	display: inline;
-}
-.testimonial-body {
-  display: inline;
+.testimonial-name {
+	font-style: normal;
 }
