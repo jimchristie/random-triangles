@@ -51,7 +51,7 @@
 				{% for entry in featuredPosts.type('business').limit(1).find() %}
 					<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
 					{% for block in entry.featuredImage %}
-						<div class="featured-image" style="{% if block.image is defined %}background-image: url('{{ block.image.first().getUrl(featured) }}');{% endif %} {% if block.fill is defined %}background-size: {{ block.fill }};{% endif %} {% if block.focalPoint %}background-position: {{ block.focalPoint }}; {% endif %}"></div>
+						<a href="{{ entry.url }}"><div class="featured-image" style="{% if block.image is defined %}background-image: url('{{ block.image.first().getUrl(featured) }}');{% endif %} {% if block.fill is defined %}background-size: {{ block.fill }};{% endif %} {% if block.focalPoint %}background-position: {{ block.focalPoint }}; {% endif %}"></div></a>
 					{% endfor %}
 
 
