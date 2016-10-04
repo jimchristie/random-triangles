@@ -880,7 +880,7 @@ Blockquotes
   overflow: hidden;
   width: 60%;
   line-height: 0;
-  border: 1px solid #0a0a0a; }
+  border: 1px solid #D8D7D7; }
   .web-development-portfolio .featured-image.landscape {
     max-height: 60rem; }
   @media only screen and (max-width: 1400px) {
@@ -891,8 +891,8 @@ Blockquotes
       width: calc(100% + 40px);
       margin: -2rem -2rem 2rem;
       border: none;
-      border-bottom: 1px solid #0a0a0a;
-      border-top: 1px solid #0a0a0a; } }
+      border-bottom: 1px solid #D8D7D7;
+      border-top: 1px solid #D8D7D7; } }
   .web-development-portfolio .featured-image img {
     width: 100%;
     height: auto; }
@@ -978,7 +978,7 @@ Individual entries
         width: 100%;
         margin: 0 0 3rem; } }
   .project .entry-content img {
-    border: none; }
+    border: 1px solid #D8D7D7; }
   .project .entry-content .skills h4 {
     font-size: 2rem; }
   .project .entry-content .full-description {

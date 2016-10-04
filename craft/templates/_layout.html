@@ -64,14 +64,14 @@
 				<div class="footer-nav">
 					<div class="footer-nav-item blog-list">
 						<h3 class="footer-nav-header"><a href="{{ url('blog') }}">Blog</a></h3>
-							<h4>Business</h4>
+							<h4>Work</h4>
 							<ul>
 								{% set featuredPosts = craft.entries.section('blog').featuredPost('1') %}
 								{% for entry in featuredPosts.type('business').limit(3).find() %}
 									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
 								{% endfor %}
 							</ul>
-							<h4>Pleasure</h4>
+							<h4>Play</h4>
 							<ul>
 								{% for entry in featuredPosts.type('pleasure').limit(3).find() %}
 									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
@@ -97,7 +97,7 @@
 					<div class="footer-nav-item web-development-list">
 						<h3 class="footer-nav-header"><a href="{{ url('web-development') }}">Web Development</a></h3>
 							<ul>
-								{% for entry in craft.entries.section('webDevelopment').limit(5).find() %}
+								{% for entry in craft.entries.section('webDevelopment').order('featured desc').limit(5).find() %}
 									<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
 								{% endfor %}
 							</ul>

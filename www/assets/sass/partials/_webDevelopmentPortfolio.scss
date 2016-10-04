@@ -4,7 +4,7 @@
 		overflow: hidden;
 		width: 60%;
 		line-height: 0;
-		border: 1px solid $black;
+		border: 1px solid color(gray, light);
 
 		&.landscape {
 			max-height: rem(600px);
@@ -18,8 +18,8 @@
 			width: calc(100% + 40px);
 			margin: rem(-20px) rem(-20px) rem(20px);
 			border: none;
-			border-bottom: 1px solid $black;
-			border-top: 1px solid $black;
+			border-bottom: 1px solid color(gray, light);
+			border-top: 1px solid color(gray, light);
 		}
 
 		img {
@@ -127,7 +127,7 @@ Individual entries
 		}
 
 		img {
-			border: none;
+			border: 1px solid color(gray, light);
 		}
 
 		.skills {
