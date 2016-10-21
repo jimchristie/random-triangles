@@ -11,22 +11,40 @@ return array(
 
 	'*' => array(
         'omitScriptNameInUrls' => true,
+        'environmentVariables' => array(
+            'prod' => false
+        )
+    ),
+
+    'jimchristie.me' => array(
+        'environmentVariables' =>array(
+            'prod' => true,
+            'basePath' => 'home/www/jimchristie.me',
+            'baseUrl' => 'http://jimchristie.me'
+        )
     ),
 
     'localhost' => array(
         'devMode' => true,
     	'environmentVariables' => array(
-    		'prod' => false,
 			'basePath' => '/var/www/html/dev/www/',
 	        'baseUrl' => 'http://localhost/dev/www/',
 	    )
     ),
 
     'dev.jimchristie.me' => array(
+        'devMode' => true,
         'environmentVariables' => array(
-    		'prod' => true,
+            'prod' => false,
 			'basePath' => '/home/www/jimchristie.me/subdomains/dev',
 	        'baseUrl' => 'http://dev.jimchristie.me',
 	    )
     ),
+    'baffledhuman' => array(
+        'environmentVariables' => array(
+            'prod' => true,
+            'basePath' => '/home/www/baffledhuman.com/www',
+            'baseUrl' => 'http://baffledhuman.com',
+        )
+    )
 );
