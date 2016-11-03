@@ -537,7 +537,9 @@ Blockquotes
     float: left;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 10; }
     @media only screen and (max-width: 1400px) {
       .homepage-featured-post .featured-image {
         width: 100%;

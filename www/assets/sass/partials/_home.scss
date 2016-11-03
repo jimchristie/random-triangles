@@ -55,6 +55,8 @@
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
+		position: relative;
+		z-index: 10;
 
 		@include media(xlarge){
 			width: 100%;
@@ -235,7 +237,7 @@
 
 	.conferences {
 		@include flex(1);
-		margin-bottom: rem(50px);
+		margin-bottom: rem(50px);	
 	}
 
 	.skills-and-certs {
