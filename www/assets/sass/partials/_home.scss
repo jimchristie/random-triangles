@@ -28,7 +28,7 @@
 		}
 	}
 
-	&.business {
+	&.work {
 		margin-right: 4%;
 
 		@include media(large){
@@ -39,7 +39,7 @@
 
 	}
 
-	&.pleasure {
+	&.play {
 		margin-left: rem(-10px);
 
 		@include media(large){

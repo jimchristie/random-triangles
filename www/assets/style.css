@@ -518,17 +518,17 @@ Blockquotes
   vertical-align: top; }
   .homepage-featured-post h3 a:hover {
     text-decoration: inherit; }
-  .homepage-featured-post.business {
+  .homepage-featured-post.work {
     margin-right: 4%; }
     @media only screen and (max-width: 1024px) {
-      .homepage-featured-post.business {
+      .homepage-featured-post.work {
         padding-bottom: 1rem;
         margin-bottom: 3rem;
         border-bottom: 1px solid #0a0a0a; } }
-  .homepage-featured-post.pleasure {
+  .homepage-featured-post.play {
     margin-left: -1rem; }
     @media only screen and (max-width: 1024px) {
-      .homepage-featured-post.pleasure {
+      .homepage-featured-post.play {
         margin-left: 0; } }
   .homepage-featured-post .featured-image {
     width: 50%;
