@@ -22,7 +22,7 @@
 
 {% block content %}
 
-	{% for entry in craft.entries.section('art').find() %}
+	{% for entry in craft.entries.section('art').order('featured desc, postDate desc').find() %}
 		<article class="art-portfolio index">
 			<h2 class="title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
 			<div class="entry-content">

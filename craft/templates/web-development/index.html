@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 	{% endif %}
-	{% for entry in craft.entries.section('webDevelopment').order('featured desc').find() %}
+	{% for entry in craft.entries.section('webDevelopment').order('featured desc, startDate desc').find() %}
 		<article class="web-development-portfolio index">
 			<h2 class="title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
 			<div class="entry-content">
