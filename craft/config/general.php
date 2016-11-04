@@ -12,7 +12,8 @@ return array(
 	'*' => array(
         'omitScriptNameInUrls' => true,
         'environmentVariables' => array(
-            'prod' => false
+            'prod' => false,
+            'siteName' => 'Jim Christie',
         )
     ),
 
@@ -20,7 +21,7 @@ return array(
         'environmentVariables' =>array(
             'prod' => true,
             'basePath' => 'home/www/jimchristie.me',
-            'baseUrl' => 'http://jimchristie.me'
+            'baseUrl' => 'http://jimchristie.me',
         )
     ),
 
@@ -29,6 +30,7 @@ return array(
     	'environmentVariables' => array(
 			'basePath' => '/var/www/html/dev/www/',
 	        'baseUrl' => 'http://localhost/dev/www/',
+            'siteName' => 'Local Dev Site',
 	    )
     ),
 
@@ -38,6 +40,7 @@ return array(
             'prod' => false,
 			'basePath' => '/home/www/jimchristie.me/subdomains/dev',
 	        'baseUrl' => 'http://dev.jimchristie.me',
+            'siteName' => 'Jim Christie Dev',
 	    )
     ),
     'baffledhuman' => array(
@@ -45,6 +48,7 @@ return array(
             'prod' => true,
             'basePath' => '/home/www/baffledhuman.com/www',
             'baseUrl' => 'http://baffledhuman.com',
+            'siteName' => 'Baffled Human',
         )
     )
 );
