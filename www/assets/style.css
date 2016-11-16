@@ -815,8 +815,11 @@ Blockquotes
   .art-portfolio img {
     display: block;
     margin: 0 auto;
-    max-width: 75%;
     height: auto; }
+    .art-portfolio img.landscape {
+      max-width: 75%; }
+    .art-portfolio img.portrait {
+      max-width: 50%; }
   .art-portfolio.piece .entry-content {
     padding-top: 0; }
   .art-portfolio .media h5 {

@@ -2,8 +2,15 @@
 	img {
 		display: block;
 		margin: 0 auto;
-		max-width: 75%;
 		height: auto;
+
+		&.landscape {
+			max-width: 75%;
+		}
+
+		&.portrait {
+			max-width: 50%;
+		}
 	}
 
 	&.piece {

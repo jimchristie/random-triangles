@@ -20,7 +20,7 @@
 	<article class="{{ entry.section | lower }}-portfolio piece">
 		<div class="entry-content no-border">
 			{% for asset in entry.images %}
-			    <img src="{{ asset.getUrl() }}" />
+			    <img src="{{ asset.getUrl() }}" class="{{ entry.orientation }}"/>
 			{% endfor %}
 			<div class="artist-statement">{{ entry.artistStatement }}</div>
 			<div class="media">
