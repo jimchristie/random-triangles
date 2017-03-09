@@ -56,4 +56,32 @@ jQuery(document).ready(function($){
 		if (window.innerWidth >= 768)
 			clearStyles("#main-nav");
 	});
+
+
+	/*************
+	Temp for page timings
+	***************/
+
+	// function time(){
+	// 	var now = new Date().getTime();
+	// 	return now;
+	// }
+
+	// var inTime;
+	// var outTime;
+
+	// function timeHoverEvents(element){
+	// 	var name = typeof element.text() === 'undefined' ? 'no text' : element.text();
+	// 	var length = outTime - inTime;
+	// 	console.log(name + ' ' + length);
+	// }
+
+	// $("a").mouseenter(function(){
+	// 	inTime = time();
+	// });
+
+	// $("a").mouseleave(function(){
+	// 	outTime = time();
+	// 	timeHoverEvents($(this));
+	// });
 });
