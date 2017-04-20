@@ -18,8 +18,6 @@
 {% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
 
 
-{% cache globally %}
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 	<head>
@@ -112,5 +110,3 @@
 		<script data-no-instant>InstantClick.init(75);</script>
 	</body>
 </html>
-
-{% endcache %}
