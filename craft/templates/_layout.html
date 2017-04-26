@@ -21,7 +21,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 	
-{% cache for 4 weeks %}
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
@@ -58,7 +57,6 @@
 			</nav>
 			
 		</header>
-{% endcache %}
 
 		{% if title is defined and title != "Home" %}<div id="page-title-container"><h1 id="page-title">{{ title }}</h1></div>{% endif %}
 		<main class="content">
@@ -70,13 +68,11 @@
 			</div>
 		</main>
 
-{% cache for 4 weeks %}
 		<footer id="footer">
 			<div class="margin-container">
 				<div class="footer-nav">
 					<div class="footer-nav-item blog-list">
 						<h3 class="footer-nav-header"><a href="{{ url('blog') }}">Blog</a></h3>
-{% endcache %}
 						{% set entries = craft.entries.section('blog') %}
 						{% for category in craft.categories.group('blog').relatedTo(entries) %}
 							<h4>{{ category }}</h4>
@@ -110,12 +106,10 @@
 					<p>Copyright &copy; {{ now.year }} {{ siteName }}<br>All rights reserved.</p>
 				</div>
 			</div>
-{% cache for 4 weeks %}
 		</footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="{{ siteUrl }}assets/js/main.js"></script>
 		<script src="{{ siteUrl }}assets/js/instantclick.min.js" data-no-instant></script>
 		<script data-no-instant>InstantClick.init(75);</script>
-{% endcache %}
 	</body>
 </html>
