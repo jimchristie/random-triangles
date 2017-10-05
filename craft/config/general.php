@@ -21,7 +21,7 @@ return array(
         'environmentVariables' =>array(
             'prod' => true,
             'basePath' => 'home/www/jimchristie.me',
-            'baseUrl' => 'http://jimchristie.me',
+            'baseUrl' => 'https://jimchristie.me',
         )
     ),
 
