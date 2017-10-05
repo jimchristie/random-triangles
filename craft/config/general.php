@@ -7,6 +7,10 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
  */
 
+// determine transfer protocol
+$isHttps = isset($_SERVER['HTTPS']);
+$protocol = $isHttps ? 'https' : 'http';
+
 return array(
 
 	'*' => array(
@@ -21,7 +25,7 @@ return array(
         'environmentVariables' =>array(
             'prod' => true,
             'basePath' => 'home/www/jimchristie.me',
-            'baseUrl' => 'https://jimchristie.me',
+            'baseUrl' => "{$protocol}://jimchristie.me",
         )
     ),
 
@@ -39,7 +43,7 @@ return array(
         'environmentVariables' => array(
             'prod' => false,
 			'basePath' => '/home/www/jimchristie.me/subdomains/dev',
-	        'baseUrl' => 'http://dev.jimchristie.me',
+	        'baseUrl' => "{$protocol}://dev.jimchristie.me",
             'siteName' => 'Jim Christie Dev',
 	    )
     ),
@@ -47,7 +51,7 @@ return array(
         'environmentVariables' => array(
             'prod' => true,
             'basePath' => '/home/www/baffledhuman.com/www',
-            'baseUrl' => 'http://baffledhuman.com',
+            'baseUrl' => "{$protocol}:///baffledhuman.com",
             'siteName' => 'Baffled Human',
         )
     )
