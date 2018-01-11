@@ -41,10 +41,10 @@ return array(
     'dev.jimchristie.me' => array(
         'devMode' => true,
         'environmentVariables' => array(
-            'prod' => false,
-			'basePath' => '/home/www/jimchristie.me/www/subdomains/dev',
-	        'baseUrl' => "{$protocol}://dev.jimchristie.me",
-            'siteName' => 'Jim Christie Dev',
+        'prod' => false,
+				'basePath' => '/home/www/jimchristie.me/subdomains/dev',
+	      'baseUrl' => "{$protocol}://dev.jimchristie.me",
+        'siteName' => 'Jim Christie Dev',
 	    )
     ),
     'baffledhuman' => array(

@@ -12,6 +12,7 @@
 
 {# Tell the browser to cache this page for 30 days #}
 {% set expiry = now|date_modify('+30 days') %}
+{% set prod = craft.config.environmentVariables.prod %}
 
 {% header "Cache-Control: max-age=" ~ expiry.timestamp %}
 {% header "Pragma: cache" %}
@@ -22,6 +23,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 	
 	<head>
+		{% if prod %}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62000039-1"></script>
 		<script>
@@ -30,15 +32,26 @@
 			gtag('js', new Date());
 			gtag('config', 'UA-62000039-1');
 		</script>
+		{% endif %}
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
 		<title>{% if title is defined and title != "Home" %}{{ title }} - {% endif %}{{ siteName }}</title>
 		<link rel="home" href="{{ siteUrl }}" />
 		<link rel="stylesheet" type="text/css" href="{{ siteUrl }}assets/style.css"> 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Franklin">
+		{% if not prod %}
+		<style type="text/css">
+			body,
+			section,
+			article {
+				background-image: url('http://rimblas.com/work/apex/development.png');
+			}
+		</style>
+		{% endif %}
 		<script src="https://use.fontawesome.com/7da62fb7ed.js" defer></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" defer></script>
 		<script src="{{ siteUrl }}assets/js/main.js" defer></script>
+		{% if prod %}
 		<script type="text/javascript">
 			window.smartlook||(function(d) {
 				var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
@@ -47,6 +60,7 @@
 			})(document);
 			smartlook('init', 'a9272f39ea76e6593a0ee8b1a621aef53ebbf1fc');
 		</script>
+		{% endif %}
 	</head>
 
 	<body class="{% if title is defined %}page-title-{{ title | lower | replace({' ': '-'}) }}{% else %}no-title{% endif %}">
